@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destination Management - BDTrip Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="../config.js"></script>
+    <style>
+      :root {
+        --primary-color: #667eea;
+        --secondary-color: #764ba2;
+        --success-color: #2ecc71;
+        --warning-color: #f39c12;
+        --danger-color: #e74c3c;
+        --dark-color: #2c3e50;
+        --light-bg: #f8f9fa;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .page-container {
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+
+      /* Header */
+      .page-header {
+        background: white;
+        padding: 25px 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .page-header h1 {
+        color: var(--dark-color);
+        font-size: 2rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .page-header h1 i {
+        color: var(--primary-color);
+        font-size: 2.2rem;
+      }
+
+      .btn-back {
+        background: var(--dark-color);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: var(--transition);
+        font-weight: 500;
+      }
+
+      .btn-back:hover {
+        background: #34495e;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+
+      /* Main Layout */
+      .main-layout {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 30px;
+      }
+
+      /* Sidebar Controls */
+      .controls-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .control-card {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .control-card h3 {
+        color: var(--dark-color);
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid var(--primary-color);
+      }
+
+      .control-card h3 i {
+        color: var(--primary-color);
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--dark-color);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      .btn-action {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: var(--transition);
+        margin-top: 10px;
+      }
+
+      .btn-add {
+        background: linear-gradient(135deg, var(--success-color), #27ae60);
+        color: white;
+      }
+
+      .btn-add:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+      }
+
+      .btn-update {
+        background: linear-gradient(135deg, var(--warning-color), #e67e22);
+        color: white;
+      }
+
+      .btn-update:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
+      }
+
+      .btn-sort {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 12px;
+        font-size: 0.95rem;
+      }
+
+      .btn-sort:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .sort-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      /* Main Content */
+      .destinations-section {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+
+      .section-header h3 {
+        color: var(--dark-color);
+        font-size: 1.4rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .search-box {
+        position: relative;
+        width: 350px;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 12px 45px 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        transition: var(--transition);
+      }
+
+      .search-box input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      .search-box i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #7f8c8d;
+        font-size: 1.2rem;
+      }
+
+      /* Destinations Grid */
+      .destinations-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 25px;
+        margin-top: 25px;
+        max-height: 750px;
+        overflow-y: auto;
+        padding: 10px;
+      }
+
+      .destination-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .destination-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        border-color: var(--primary-color);
+      }
+
+      .destination-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-bottom: 3px solid var(--primary-color);
+      }
+
+      .destination-info {
+        padding: 20px;
+      }
+
+      .destination-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 12px;
+      }
+
+      .destination-name {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--dark-color);
+        margin: 0;
+      }
+
+      .destination-id {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .destination-location {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #7f8c8d;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+      }
+
+      .destination-location i {
+        color: var(--primary-color);
+      }
+
+      .destination-price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--success-color);
+        margin-bottom: 15px;
+      }
+
+      .destination-price i {
+        font-size: 1.2rem;
+      }
+
+      .destination-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #ecf0f1;
+      }
+
+      .card-btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: var(--transition);
+      }
+
+      .btn-edit-card {
+        background: var(--warning-color);
+        color: white;
+      }
+
+      .btn-edit-card:hover {
+        background: #e67e22;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+      }
+
+      .btn-delete-card {
+        background: var(--danger-color);
+        color: white;
+      }
+
+      .btn-delete-card:hover {
+        background: #c0392b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+      }
+
+      .no-data {
+        text-align: center;
+        padding: 80px 20px;
+        color: #7f8c8d;
+      }
+
+      .no-data i {
+        font-size: 5rem;
+        margin-bottom: 20px;
+        opacity: 0.3;
+      }
+
+      .no-data p {
+        font-size: 1.2rem;
+        margin: 0;
+      }
+
+      /* Scrollbar Styling */
+      .destinations-grid::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .destinations-grid::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .destinations-grid::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 10px;
+      }
+
+      .destinations-grid::-webkit-scrollbar-thumb:hover {
+        background: var(--dark-color);
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .main-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .controls-sidebar {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .page-header {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+
+        .page-header h1 {
+          font-size: 1.5rem;
+        }
+
+        .search-box {
+          width: 100%;
+        }
+
+        .section-header {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .destinations-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sort-buttons {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Loading Animation */
+      .loading {
+        text-align: center;
+        padding: 50px;
+        color: var(--primary-color);
+      }
+
+      .loading i {
+        font-size: 3rem;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-container">
+      <!-- Header -->
+      <div class="page-header">
+        <h1>
+          <i class="fas fa-map-marked-alt"></i>
+          Destination Management
+        </h1>
+        <a href="adminDashboard.html" class="btn-back">
+          <i class="fas fa-arrow-left"></i>
+          Back to Dashboard
+        </a>
+      </div>
+
+      <!-- Main Layout -->
+      <div class="main-layout">
+        <!-- Sidebar Controls -->
+        <div class="controls-sidebar">
+          <!-- Add Destination -->
+          <div class="control-card">
+            <h3>
+              <i class="fas fa-plus-circle"></i>
+              Add New Destination
+            </h3>
+            <div class="form-group">
+              <label><i class="fas fa-map-marker-alt"></i> Destination Name</label>
+              <input type="text" id="product-name" placeholder="Enter destination name" required>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-image"></i> Image URL</label>
+              <input type="text" id="product-image" placeholder="Enter image URL">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-link"></i> Website URL</label>
+              <input type="text" id="product-website" placeholder="Enter website URL (optional)">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-location-dot"></i> Location</label>
+              <input type="text" id="product-brand" placeholder="Enter location">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-dollar-sign"></i> Package Price (৳)</label>
+              <input type="number" id="product-price" placeholder="Enter price">
+            </div>
+            <button id="add-product" class="btn-action btn-add">
+              <i class="fas fa-plus"></i>
+              Add Destination
+            </button>
+          </div>
+
+          <!-- Update Destination -->
+          <div class="control-card">
+            <h3>
+              <i class="fas fa-edit"></i>
+              Update Destination
+            </h3>
+            <div class="form-group">
+              <label><i class="fas fa-hashtag"></i> Destination ID</label>
+              <input type="text" id="update-product-id" placeholder="Enter ID to update">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-map-marker-alt"></i> Destination Name</label>
+              <input type="text" id="update-product-name" placeholder="Enter new name">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-image"></i> Image URL</label>
+              <input type="text" id="update-product-image" placeholder="Enter new image URL">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-link"></i> Website URL</label>
+              <input type="text" id="update-product-website" placeholder="Enter website URL (optional)">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-location-dot"></i> Location</label>
+              <input type="text" id="update-product-brand" placeholder="Enter new location">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-dollar-sign"></i> Package Price (৳)</label>
+              <input type="number" id="update-product-price" placeholder="Enter new price">
+            </div>
+            <button id="update-product" class="btn-action btn-update">
+              <i class="fas fa-save"></i>
+              Update Destination
+            </button>
+          </div>
+
+          <!-- Sort Options -->
+          <div class="control-card">
+            <h3>
+              <i class="fas fa-sort-amount-down"></i>
+              Sort by Price
+            </h3>
+            <div class="sort-buttons">
+              <button id="sort-low-to-high" class="btn-action btn-sort">
+                <i class="fas fa-arrow-up"></i>
+                Low to High
+              </button>
+              <button id="sort-high-to-low" class="btn-action btn-sort">
+                <i class="fas fa-arrow-down"></i>
+                High to Low
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Destinations List -->
+        <div class="destinations-section">
+          <div class="section-header">
+            <h3>
+              <i class="fas fa-list"></i>
+              All Destinations
+            </h3>
+            <div class="search-box">
+              <input type="search" id="search" placeholder="Search by name or location...">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+          <div class="destinations-grid" id="data-list-wrapper">
+            <div class="loading">
+              <i class="fas fa-spinner fa-spin"></i>
+              <p>Loading destinations...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./admin.js"></script>
+  </body>
+</html>

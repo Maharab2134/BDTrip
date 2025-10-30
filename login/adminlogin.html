@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="adminlogin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="overlay">
+        <h1>Secure Admin Panel</h1>
+        <p>Log in to manage your dashboard with confidence.</p>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="login-form">
+        <h2>Welcome Back</h2>
+        <p>Sign in to continue</p>
+
+        <input type="text" id="user_name" placeholder="Username" />
+        
+        <div class="password-wrapper">
+          <input type="password" id="passwords" placeholder="Password" />
+          <span class="toggle-password" id="togglePassword">👁️</span>
+        </div>
+
+        <div class="remember-forgot">
+          <label><input type="checkbox">  Remember me</label>
+          <a href="mailto:support@example.com">Forgot password?</a>
+        </div>
+
+        <button id="login--btn">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="adminlogin.js"></script>
+</body>
+</html>

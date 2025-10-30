@@ -1,0 +1,200 @@
+{
+  "admin": [
+    {
+      "id": "102030",
+      "name": "admin",
+      "passward": "admin"
+    }
+  ],
+  "serviceBookings": [],
+  "destinationBookings": [
+    {
+      "id": "efbf",
+      "name": "Paro",
+      "location": "Scenic Small Town in Bhutan",
+      "image": "https://hblimg.mmtcdn.com/content/hubble/img/paro/mmt/destination/m_paro-landscape_l_400_640.jpg",
+      "city": "Agartala, Tripura, India",
+      "start": "2025-10-22",
+      "end": "2025-10-23",
+      "persons": "3",
+      "amount": "2250",
+      "bookingDate": "2025-10-22T14:29:41.164Z",
+      "status": "Confirmed",
+      "username": "Akash"
+    }
+  ],
+  "users": [
+    {
+      "id": "8813",
+      "name": "Akash",
+      "email": "ab@gmail.com",
+      "passward": "1234567"
+    },
+    {
+      "id": "6348",
+      "name": "RIdoy",
+      "email": "ridoy@gmail.com",
+      "passward": "123456"
+    }
+  ],
+  "services": [
+    {
+      "name": "Old Dhaka Rickshaw Odyssey",
+      "description": "Navigate the vibrant, chaotic alleys of Old Dhaka on a classic rickshaw. Discover ancient forts, palaces, and the bustling Sadarghat river port.",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fapicms.thestar.com.my%2Fuploads%2Fimages%2F2023%2F12%2F21%2F2451518.jpg&f=1&nofb=1&ipt=7770da8e2f168d0027a198bfe107a055887cffdb50df0b89db8864de53b4928f",
+      "price": "1000",
+      "duration": "4-6 hours",
+      "groupSize": "1-4 people",
+      "icon": "fa-biking",
+      "id": "1"
+    },
+    {
+      "name": "Sundarbans Mangrove Expedition",
+      "description": "A multi-day boat journey into the world's largest mangrove forest, a UNESCO site. Spot wildlife and search for the elusive Royal Bengal Tiger.",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fsundarbans-india-circa-november-largest-mangrove-forest-world-circa-november-51376913.jpg%3Fw%3D992&f=1&nofb=1&ipt=ac659eb524173302b90f8656b3a397febad08d798de37314b08d37bc27223709",
+      "price": "10000",
+      "duration": "3 days / 2 nights",
+      "groupSize": "6-12 people",
+      "icon": "fa-ship",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "name": "Dhaka Culinary Crawl",
+      "description": "Taste the heart of Bangladesh! From street-side Fuchka to royal Biryani, this food tour takes you to the most authentic and delicious spots in the city.",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.L63ZBPSYsBaEKRTzfCOmHgHaEK%3Fcb%3D12%26pid%3DApi&f=1&ipt=e5a6b966d4e207d2d00f482c74eeae4e9ca42cee7a293c7305beb34a3865902f&ipo=images",
+      "price": "3500",
+      "duration": "3-4 hours",
+      "groupSize": "2-6 people",
+      "icon": "fa-utensils"
+    },
+    {
+      "id": "4",
+      "name": "Sreemangal Tea Gardens Tour",
+      "description": "Escape to the 'tea capital' of Bangladesh. Walk through lush green tea estates, learn about tea processing, and visit local indigenous villages.",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F25%2Fc6%2Fdf%2F25c6df85985f09deb3d344793bc2c748.jpg&f=1&nofb=1&ipt=86deab23c441bddafe00abdc7ad052099a3b95951c486cb1c48f546404fbdba5",
+      "price": "4000",
+      "duration": "Full Day (6-8 hours)",
+      "groupSize": "2-10 people",
+      "icon": "fa-leaf"
+    },
+    {
+      "id": "5",
+      "name": "Ancient Ruins of Bengal",
+      "description": "Journey back in time to explore Bangladesh's rich archaeological past, including the UNESCO World Heritage sites of Paharpur and Bagerhat.",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F2.bp.blogspot.com%2F-tE2m5pVCmu0%2FV0x92EdnOaI%2FAAAAAAAADxw%2FH4g_LOiHfH0QlWgy-kkL8XcwDZ47Z5lrACLcB%2Fs1600%2FGauda%252BDakhil%252BDarwaza.jpg&f=1&nofb=1&ipt=364a01f755f3dccb06f15df886931ac6f4f7a39db8c88e75514397f5d903c878",
+      "price": "7000",
+      "duration": "Full Day (8-10 hours)",
+      "groupSize": "2-6 people",
+      "icon": "fa-landmark"
+    },
+    {
+      "id": "6",
+      "name": "Bangladesh Photography Expedition",
+      "description": "Capture the soul of Bangladesh on a tour designed for photographers. We'll guide you to the most photogenic spots, from bustling markets to serene landscapes.",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.8FA41Fc3Kzz-FZIHydaTsgHaEK%3Fcb%3D12%26pid%3DApi&f=1&ipt=3f1b960182a70cc145d027da9d7b7bf823dcc8d2ae0379ad06838388284555fc&ipo=images",
+      "price": "6000",
+      "duration": "Full Day (Customizable)",
+      "groupSize": "1-3 people",
+      "icon": "fa-camera-retro"
+    },
+    {
+      "id": "7",
+      "name": "A Day in a Bengali Village",
+      "description": "Experience authentic rural life. Share a home-cooked meal with a local family, walk through green paddy fields, and see traditional artisans at work.",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.nationalgeographic.org%2Fimage%2Fupload%2Fv1638884690%2FEducationHub%2Fphotos%2Fbengali-village.jpg&f=1&nofb=1&ipt=66ebc0139b7581cc33da8fae72b3d749cc89c9607c016b0bc3e873b0e0defd19",
+      "price": "4500",
+      "duration": "6-7 hours",
+      "groupSize": "2-8 people",
+      "icon": "fa-people-roof"
+    },
+    {
+      "id": "8",
+      "name": "Liberation War History Tour",
+      "description": "A powerful journey through the history of Bangladesh's birth. Visit the Liberation War Museum, memorials, and key sites from the 1971 war.",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.JLDyCNoNd-l5zLXmIIGOvAHaFj%3Fcb%3D12%26pid%3DApi&f=1&ipt=3aa437491f201e5d2148b8b990b9e75f9d65ef83015d45dfeb7ebc75659db1b9&ipo=images",
+      "price": "1000",
+      "duration": "4-5 hours",
+      "groupSize": "2-10 people",
+      "icon": "fa-book-atlas"
+    },
+    {
+      "id": "9",
+      "name": "Bandarban Hills Trekking",
+      "description": "Hike through the stunning hills of Bandarban. Discover remote tribal villages, cascading waterfalls, and breathtaking panoramic viewpoints.",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.IJlSw4Q6fLvwm6Z7CiOhkQHaE8%3Fcb%3D12%26pid%3DApi&f=1&ipt=c5ef00e86e84bc5025f9f9ec02c8e77a3025a50138fd55e2a21a9f6f8f179982&ipo=images",
+      "price": "12000",
+      "duration": "2 days / 1 night",
+      "groupSize": "4-8 people",
+      "icon": "fa-person-hiking"
+    },
+    {
+      "id": "10",
+      "name": "Mountain Biking",
+      "description": "Experience thrilling mountain biking adventures through the scenic trails and challenging terrains of the Chittagong Hill Tracts.",
+      "image": "https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "price": "5500",
+      "duration": "5-7 hours",
+      "groupSize": "2-8 people",
+      "icon": "fa-biking"
+    }
+  ],
+  "destinations": [
+    {
+      "name": "Grand Sultan Tea Resort & Golf",
+      "location": "Srimangal, Moulvibazar",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.V0zNtS0xwJTfJD9wOW4I1gHaE8%3Fpid%3DApi&f=1&ipt=05f4f92c500ed1205a5b567596e40217e40bc1abea86e1fe145acf2169774201&ipo=images",
+      "rating": 70,
+      "price": "16500",
+      "id": "1"
+    },
+    {
+      "name": "DuSai Resort & Spa",
+      "location": "Niteshwar, Giashnagar, Moulvibazar",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.FtwgfJpD0sxYPJZvqkWAbAHaEc%3Fcb%3D12%26pid%3DApi&f=1&ipt=69064cf18da23626dcbd83dc6d53439198dddbabbbb1b22dd642064b7cac7c38&ipo=images",
+      "rating": 97,
+      "price": "18000",
+      "id": "2"
+    },
+    {
+      "name": "Rangauti Resort",
+      "location": "Maulvibazar, Sylhet",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.Grg3WBgldK_McZO9wumdGgHaEK%3Fpid%3DApi&f=1&ipt=dd2789ffc58aed9691c3d633327fba20111bb51c8d6ddce6e82bc37febc421c3&ipo=images",
+      "rating": 50,
+      "price": "5400",
+      "id": "3"
+    },
+    {
+      "name": "Sayeman Beach Resort",
+      "location": "Cox’s Bazar, Kolatoli",
+      "image": "https://hblimg.mmtcdn.com/content/hubble/img/maldives/mmt/destination/m_Maldives_l_400_640.jpg",
+      "rating": 69,
+      "price": "12000",
+      "id": "4"
+    },
+    {
+      "name": "Heritage Resort Ltd.",
+      "location": "Nawapara, Madhabdi, Narsingdi",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.N181P910g1aYc9FUVMcT2wHaDY%3Fpid%3DApi&f=1&ipt=ea592a87c9de73b5eed982b50525863c420fb6f2561c605e90d3f5bbc0d3af9f&ipo=images",
+      "rating": 82,
+      "price": "4000",
+      "id": "5"
+    },
+    {
+      "name": "Sea Pearl Beach Resort & Spa",
+      "location": "Ukhia, Cox’s Bazar",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdynamic-media-cdn.tripadvisor.com%2Fmedia%2Fphoto-o%2F13%2F10%2Fd5%2F5f%2Froyal-tulip-sea-pearl.jpg%3Fw%3D900%26h%3D-1%26s%3D1&f=1&nofb=1&ipt=f37f9c056c3fd7466092470bdad882b8758c254eb8ed9ceaf09f49e01c384a39",
+      "rating": 57,
+      "price": "11450",
+      "id": "6"
+    },
+    {
+      "id": "b8e3",
+      "name": "Ocean Paradise Hotel & Resort",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.hcWsyNdO8wvDsujra-e1DwHaE8%3Fcb%3D12%26pid%3DApi&f=1&ipt=54e5ca0ea47a488d3f2c170bb4236e463929fd769a92132e5a38232250c412fc&ipo=images",
+      "location": "Cox’s Bazar",
+      "price": "8999",
+      "website": ""
+    }
+  ]
+}

@@ -1,0 +1,420 @@
+:root {
+  --primary-color: #ff8a23;
+  --primary-dark: #e6730f;
+  --secondary-color: #2c3e50;
+  --light-color: #f9f9f9;
+  --text-color: #333;
+  --border-color: #e1e1e1;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.registration-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.registration-card {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.registration-left {
+  flex: 1;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.registration-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+  background-size: cover;
+}
+
+.registration-left-content {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-link {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 250px;
+  filter: brightness(0) invert(1);
+}
+
+.welcome-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.welcome-subtext {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  max-width: 90%;
+}
+
+.benefits-list {
+  margin-top: 30px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.benefit-item i {
+  font-size: 1.8rem;
+  margin-right: 15px;
+  margin-top: 5px;
+  width: 30px;
+  text-align: center;
+}
+
+.benefit-item h5 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.benefit-item p {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.registration-right {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-header h1 {
+  color: var(--secondary-color);
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 2.2rem;
+}
+
+.form-header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  color: #777;
+  z-index: 10;
+}
+
+.form-control {
+  width: 100%;
+  padding: 15px 15px 15px 50px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 138, 35, 0.2);
+  background-color: #fff;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.password-strength {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  gap: 10px;
+}
+
+.strength-bar {
+  flex: 1;
+  height: 6px;
+  background-color: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.strength-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: none;
+}
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+}
+
+.form-check-input {
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.form-check-label {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.terms-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.register-btn {
+  background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.register-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 15px rgba(255, 138, 35, 0.4);
+}
+
+.register-btn:active {
+  transform: translateY(0);
+}
+
+.register-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-text, .btn-loader {
+  transition: opacity 0.3s;
+}
+
+.form-footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.form-footer p {
+  color: #666;
+}
+
+.auth-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.auth-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.registration-footer {
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Error states */
+.form-control.error {
+  border-color: var(--error-color);
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* Password strength indicators */
+.strength-weak .strength-fill {
+  background-color: var(--error-color);
+  width: 33%;
+}
+
+.strength-medium .strength-fill {
+  background-color: var(--warning-color);
+  width: 66%;
+}
+
+.strength-strong .strength-fill {
+  background-color: var(--success-color);
+  width: 100%;
+}
+
+.strength-weak .strength-text {
+  color: var(--error-color);
+}
+
+.strength-medium .strength-text {
+  color: var(--warning-color);
+}
+
+.strength-strong .strength-text {
+  color: var(--success-color);
+}
+
+/* Success animation */
+@keyframes success {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.success {
+  animation: success 0.5s ease;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 992px) {
+  .registration-card {
+    flex-direction: column;
+    max-width: 600px;
+  }
+  
+  .registration-left, .registration-right {
+    padding: 30px;
+  }
+  
+  .logo {
+    width: 200px;
+  }
+  
+  .welcome-text {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .registration-container {
+    padding: 10px;
+  }
+  
+  .registration-left, .registration-right {
+    padding: 25px 20px;
+  }
+  
+  .logo {
+    width: 180px;
+  }
+  
+  .welcome-text {
+    font-size: 1.8rem;
+  }
+  
+  .form-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .benefit-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .benefit-item i {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

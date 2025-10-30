@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Righteous&family=Tilt+Prism&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Destination Details - BDTrip</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .topColor {
+            background-color: #fff;
+            color: #000;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+        
+        .topColor a {
+            color: #292828;
+        }
+        
+        .nav-item:hover {
+            border-bottom: 2px solid #f4a424;
+        }
+        
+        .nav-link:focus,
+        .nav-link:hover {
+            color: #242222;
+        }
+
+        .page-header {
+            padding-top: 100px;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        #box2 {
+            display: flex;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            align-items: flex-start;
+        }
+
+        #conty {
+            flex: 2;
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        #conty > div {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        #conty > div:hover {
+            transform: translateY(-5px);
+        }
+
+        .destination-image-container {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .destination-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        #conty > div:hover .destination-image-container img {
+            transform: scale(1.05);
+        }
+
+        .destination-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 40px 30px 30px;
+            color: white;
+        }
+
+        .destination-overlay h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .destination-overlay h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .destination-info {
+            padding: 30px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #667eea30;
+        }
+
+        .info-item i {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-item h4 {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        #book {
+            flex: 1;
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideInRight 0.6s ease-out;
+        }
+
+        #book h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #book h2 i {
+            color: #667eea;
+        }
+
+        .price-display {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .price-display h3 {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .price-display .amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .price-display small {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        #detail {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group label i {
+            color: #667eea;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        #bookBtn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        #bookBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        #bookBtn:active {
+            transform: translateY(0);
+        }
+
+        .features-list {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .features-list h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #555;
+        }
+
+        .features-list li i {
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            #box2 {
+                flex-direction: column;
+            }
+
+            #book {
+                position: relative;
+                top: 0;
+                width: 100%;
+            }
+
+            .destination-image-container {
+                height: 350px;
+            }
+
+            .destination-overlay h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .destination-overlay h1 {
+                font-size: 1.6rem;
+            }
+
+            .destination-overlay h2 {
+                font-size: 1rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .destination-image-container {
+                height: 280px;
+            }
+        }
+
+        footer {
+            background: white;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!--*******************************  navbar *******************-->
+
+    <nav class="navbar navbar-expand-lg fixed-top topColor" id="navBar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="image/logo-no-background.png" alt="" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse float-xl-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+
+                        <a class="nav-link" aria-current="page" href="./discover.html">Discover</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Services</a>
+                    </li>
+                    <li class="nav-item" id="myBookingsNav" style="display:none;">
+                        <a class="nav-link" href="my-bookings.html">My Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="all-users.html">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="userLoginReg/login.html" id="logdiv">Login</a>
+                        <!-- <a class="nav-link" href="userLoginReg/login.html">Logout</a> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary reg-btn" href="userLoginReg/registration.html" id="registerDiv"></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!--*******************************  navbarEnd *******************-->
+
+    <div class="page-header">
+        <h1><i class="fas fa-map-marked-alt"></i> Destination Details</h1>
+        <p>Explore and book your perfect getaway</p>
+    </div>
+
+    <div id="box2">
+        <div id="conty"></div>
+
+        <div id="book">
+            <h2><i class="fas fa-calendar-check"></i> Book Your Trip</h2>
+            <div class="price-display">
+                <h3>Starting From</h3>
+                <div class="amount">৳<span id="priceDisplay">0</span></div>
+                <small>per person</small>
+            </div>
+            <div id="detail">
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Select Your City</label>
+                    <select name="" id="city">
+                        <option value="">Choose your city</option>
+                        <option value="Dhaka, Bangladesh">Dhaka, Bangladesh</option>
+                        <option value="Chittagong, Bangladesh">Chittagong, Bangladesh</option>
+                        <option value="Sylhet, Bangladesh">Sylhet, Bangladesh</option>
+                        <option value="Rajshahi, Bangladesh">Rajshahi, Bangladesh</option>
+                        <option value="Khulna, Bangladesh">Khulna, Bangladesh</option>
+                        <option value="Barisal, Bangladesh">Barisal, Bangladesh</option>
+                        <option value="Rangpur, Bangladesh">Rangpur, Bangladesh</option>
+                        <option value="Mymensingh, Bangladesh">Mymensingh, Bangladesh</option>
+                        <option value="Comilla, Bangladesh">Comilla, Bangladesh</option>
+                        <option value="Cox's Bazar, Bangladesh">Cox's Bazar, Bangladesh</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-calendar-alt"></i> Start Date</label>
+                    <input type="date" name="start" id="startDate" />
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-calendar-alt"></i> End Date</label>
+                    <input type="date" name="end" id="endDate" />
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-users"></i> Number of Persons</label>
+                    <input type="number" name="" id="NoOfperson" min="1" max="20" placeholder="Enter number of travelers" />
+                </div>
+            </div>
+            <button id="bookBtn">
+                <i class="fas fa-ticket-alt"></i> BOOK NOW
+            </button>
+
+            <div class="features-list">
+                <h3><i class="fas fa-star"></i> What's Included</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Professional Tour Guide</li>
+                    <li><i class="fas fa-check-circle"></i> Travel Insurance</li>
+                    <li><i class="fas fa-check-circle"></i> 24/7 Customer Support</li>
+                    <li><i class="fas fa-check-circle"></i> Flexible Cancellation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <footer class="py-5 wow animate__animated animate__fadeIn">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4  mb-3">
+
+                    <img src="image/logo-no-background.png" alt="" class="logo">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur inventore earum hic expedita voluptates nulla eius illum quo iure minima.</p>
+
+                </div>
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>ABOUT</h5>
+                    <ul class="nav flex-column">
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">About Us</a></li>
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">News & Blogs</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>MOVEMENT</h5>
+                    <ul class="nav flex-column">
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">What BDTrip</a></li>
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">Support Us</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>COMPANY</h5>
+                    <ul class="nav flex-column">
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">Why BDTrip</a></li>
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">Capital</a></li>
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">Security</a></li>
+
+                    </ul>
+                </div>
+
+
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>SUPPORT</h5>
+                    <ul class="nav flex-column">
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">FAQ</a></li>
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">Support Center</a></li>
+                        <li class=" mb-2"><a href="#" class="nav-link p-0 text-muted">Contact Us</a></li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-12 ">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                        <p>© 2025 BDTrip, All rights reserved.</p>
+                        <p>Terms & Agreements &nbsp;&nbsp; Privacy & Policy</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+</body>
+<script src="./destination.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js">
+</script>
+<script src="userLoginReg/logstatus.js"></script>
+<script>
+    // Update book button based on login status
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginstatus = JSON.parse(localStorage.getItem("logStatus"));
+        const bookBtn = document.getElementById('bookBtn');
+        
+        if (!loginstatus || loginstatus !== true) {
+            bookBtn.innerHTML = '<i class="fas fa-lock"></i> Login to Book';
+            bookBtn.style.backgroundColor = '#6c757d';
+            bookBtn.style.cursor = 'pointer';
+        }
+    });
+</script>
+
+<script>
+    // Show or hide "My Bookings" nav item based on login status
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
+            const loginstatus = JSON.parse(localStorage.getItem('logStatus'));
+            const myBookingsNav = document.getElementById('myBookingsNav');
+            if (myBookingsNav) myBookingsNav.style.display = (loginstatus === true) ? 'block' : 'none';
+        } catch (e) {
+            console.error('Error toggling My Bookings nav:', e);
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BDTrip | Discover</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Righteous&family=Tilt+Prism&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #e37b21;
+        --primary-dark: #c8691c;
+        --primary-light: #f8a654;
+        --dark-color: #222222;
+        --light-color: #f9f9f9;
+        --gray-color: #555555;
+        --text-light: #ffffff;
+        --text-dark: #222222;
+        --text-muted: #666666;
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        background-color: #f9f9f9;
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      /***************** navbar ************/
+      .topColor {
+        background-color: #fff;
+        color: var(--text-dark);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        padding: 15px 0;
+        transition: var(--transition);
+      }
+
+      .logo-text {
+        font-family: 'Tilt Prism', cursive;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-text span {
+        color: var(--primary-color);
+      }
+
+      .nav-link {
+        color: var(--text-dark);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        transition: var(--transition);
+        font-size: 1.1rem;
+      }
+
+      .nav-link:focus,
+      .nav-link:hover {
+        color: var(--primary-color);
+      }
+
+      .nav-item {
+        margin-left: 30px;
+        position: relative;
+      }
+
+      .nav-item .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      .nav-item .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .reg-btn {
+        background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        padding: 10px 25px;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(227, 123, 33, 0.3);
+        color: white;
+      }
+
+      .reg-btn:hover {
+        background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(227, 123, 33, 0.4);
+        color: white;
+      }
+
+      /* Hero Section */
+      .discover-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        margin-top: 76px;
+        color: var(--text-light);
+        text-align: center;
+      }
+
+      .discover-hero-content h1 {
+        font-family: 'Tilt Prism', cursive;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--text-light);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+
+      .discover-hero-content p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+        color: var(--text-light);
+        opacity: 0.95;
+        font-weight: 500;
+      }
+
+      /* Filter Section */
+      .filter-section {
+        background: white;
+        padding: 30px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 40px;
+      }
+
+      .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .filter-group label {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--dark-color);
+        font-size: 0.9rem;
+      }
+
+      .filter-select {
+        padding: 12px 15px;
+        border: 2px solid #e1e5ee;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: var(--transition);
+        background-color: #f8f9fa;
+        min-width: 200px;
+        color: var(--text-dark);
+      }
+
+      .filter-select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background-color: white;
+        box-shadow: 0 0 0 3px rgba(227, 123, 33, 0.1);
+      }
+
+      .search-box {
+        position: relative;
+        min-width: 300px;
+      }
+
+      .search-input {
+        padding: 12px 15px 12px 45px;
+        border: 2px solid #e1e5ee;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: var(--transition);
+        background-color: #f8f9fa;
+        width: 100%;
+        color: var(--text-dark);
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background-color: white;
+        box-shadow: 0 0 0 3px rgba(227, 123, 33, 0.1);
+      }
+
+      .search-input::placeholder {
+        color: var(--text-muted);
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary-color);
+        font-size: 18px;
+      }
+
+      .sort-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .sort-btn {
+        background: white;
+        border: 2px solid var(--primary-color);
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-weight: 600;
+        color: var(--primary-color);
+        transition: var(--transition);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .sort-btn:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Destinations Grid */
+      .destinations-container {
+        padding: 40px 0 80px;
+      }
+
+      .destinations-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .destination-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        height: 100%;
+      }
+
+      .destination-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-image {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .destination-card:hover .card-image img {
+        transform: scale(1.1);
+      }
+
+      .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .destination-card:hover .card-overlay {
+        opacity: 1;
+      }
+
+      .card-content {
+        padding: 20px;
+      }
+
+      .card-content h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        margin-bottom: 5px;
+      }
+
+      .card-content p {
+        color: var(--gray-color);
+        margin-bottom: 15px;
+        font-weight: 500;
+      }
+
+      .card-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .price {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      /* Pagination */
+      .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+      }
+
+      .pagination {
+        display: flex;
+        gap: 10px;
+      }
+
+      .page-btn {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--primary-color);
+        border-radius: 10px;
+        background: white;
+        color: var(--primary-color);
+        font-weight: 600;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .page-btn:hover, .page-btn.active {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-color);
+        color: var(--text-light);
+      }
+
+      footer h5 {
+        font-weight: 700;
+        font-family: 'Tilt Prism', cursive;
+        color: var(--text-light);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      footer li a {
+        font-family: 'Montserrat', sans-serif;
+        color: #cccccc;
+        transition: var(--transition);
+        padding: 5px 0 !important;
+        font-weight: 500;
+      }
+
+      footer li a:hover {
+        color: var(--primary-color);
+        padding-left: 5px !important;
+      }
+
+      footer p {
+        font-family: 'Montserrat', sans-serif;
+        color: #cccccc;
+        line-height: 1.6;
+        font-weight: 500;
+      }
+
+      .social-links {
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 10px;
+        color: white;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      /* Text Color Fixes */
+      .text-muted {
+        color: var(--text-muted) !important;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .destinations-grid {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .discover-hero-content h1 {
+          font-size: 2.5rem;
+        }
+        
+        .discover-hero {
+          height: 300px;
+        }
+        
+        .filter-container {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        
+        .filter-select, .search-box {
+          min-width: 100%;
+        }
+        
+        .sort-buttons {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .destinations-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .discover-hero-content h1 {
+          font-size: 2rem;
+        }
+        
+        .discover-hero p {
+          font-size: 1rem;
+        }
+        
+        .nav-item {
+          margin-left: 15px;
+        }
+        
+        .sort-buttons {
+          flex-direction: column;
+        }
+        
+        .sort-btn {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--*******************************  navbar *******************-->
+    <nav class="navbar navbar-expand-lg fixed-top topColor" id="navBar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <div class="logo-text">BD<span>Trip</span></div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse float-xl-end"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="./discover.html"
+                >Discover</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="service.html">Services</a>
+            </li>
+            <li class="nav-item" id="myBookingsNav" style="display:none;">
+              <a class="nav-link" href="my-bookings.html">My Bookings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Blogs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="userLoginReg/login.html" id="logdiv"
+                >Login</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="btn btn-primary reg-btn"
+                href="userLoginReg/registration.html"
+                id="registerDiv"
+                >Register</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--*******************************  navbarEnd *******************-->
+
+    <!-- Hero Section -->
+    <section class="discover-hero">
+      <div class="container">
+        <div class="discover-hero-content">
+          <h1>Discover Amazing Destinations</h1>
+          <p>Explore the most beautiful places in Bangladesh with our curated selection of destinations</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+      <div class="container">
+        <div class="filter-container">
+          <div class="filter-group">
+            <label for="priceSelect">Filter by Price</label>
+            <select class="filter-select" id="priceSelect">
+              <option value="">All Prices</option>
+              <option value="500">Under ৳ 500</option>
+              <option value="700">Under ৳ 700</option>
+              <option value="1000">Under ৳ 1000</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="ratingSelect">Filter by Rating</label>
+            <select class="filter-select" id="ratingSelect">
+              <option value="">All Ratings</option>
+              <option value="2">2 Stars & Above</option>
+              <option value="4">4 Stars & Above</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="searchBar">Search Destinations</label>
+            <div class="search-box">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="search-input" id="searchBar" placeholder="Search for locations..." />
+            </div>
+          </div>
+
+          <div class="sort-buttons">
+            <button class="sort-btn" id="increase">
+              <i class="fas fa-arrow-up"></i> Price Low to High
+            </button>
+            <button class="sort-btn" id="decrease">
+              <i class="fas fa-arrow-down"></i> Price High to Low
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinations Grid -->
+    <section class="destinations-container">
+      <div class="container">
+        <div class="destinations-grid" id="container">
+          <!-- Destinations will be loaded here by JavaScript -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+          <div class="pagination" id="btnbox">
+            <!-- Pagination buttons will be loaded here by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="logo-text" style="font-size: 1.8rem;">BD<span>Trip</span></div>
+            <p>
+              Discover the rich cultural heritage and natural beauty of Bangladesh with our expertly curated tours and travel experiences.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="col-6 col-md-2 mb-3">
+            <h5>ABOUT</h5>
+            <ul class="nav flex-column">
+              <li class="mb-2">
+                <a href="about.html" class="nav-link p-0 text-muted">About Us</a>
+              </li>
+              <li class="mb-2">
+                <a href="service.html" class="nav-link p-0 text-muted">Services</a>
+              </li>
+              <li class="mb-2">
+                <a href="blog.html" class="nav-link p-0 text-muted">News & Blogs</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-2 mb-3">
+            <h5>DESTINATIONS</h5>
+            <ul class="nav flex-column">
+              <li class="mb-2">
+                <a href="discover.html" class="nav-link p-0 text-muted">Popular Places</a>
+              </li>
+              <li class="mb-2">
+                <a href="discover.html" class="nav-link p-0 text-muted">Cultural Sites</a>
+              </li>
+              <li class="mb-2">
+                <a href="discover.html" class="nav-link p-0 text-muted">Natural Wonders</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-2 mb-3">
+            <h5>SUPPORT</h5>
+            <ul class="nav flex-column">
+              <li class="mb-2">
+                <a href="#" class="nav-link p-0 text-muted">FAQ</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="nav-link p-0 text-muted">Support Center</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="nav-link p-0 text-muted">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-2 mb-3">
+            <h5>CONTACT</h5>
+            <ul class="nav flex-column">
+              <li class="mb-2">
+                <a href="#" class="nav-link p-0 text-muted"><i class="fas fa-map-marker-alt me-2"></i>Dhaka, Bangladesh</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="nav-link p-0 text-muted"><i class="fas fa-phone me-2"></i>+880 1234-567890</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="nav-link p-0 text-muted"><i class="fas fa-envelope me-2"></i>info@bdtrip.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div
+              class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top"
+            >
+              <p>© 2025 BDTrip, All rights reserved.</p>
+              <div>
+                <a href="#" class="text-muted me-3">Terms & Agreements</a>
+                <a href="#" class="text-muted">Privacy & Policy</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // API Configuration
+      const API_BASE_URL = "http://localhost:3000";
+
+      let cont = document.getElementById("container");
+      let data = [];
+      let ratingBtn = document.getElementById("ratingSelect");
+      let priceBtn = document.getElementById("priceSelect");
+      let btnBox = document.getElementById("btnbox");
+      fetching(1);
+
+      function fetching(pageNum) {
+        let info = fetch(`${API_BASE_URL}/destinations?_limit=9&_page=${pageNum}`);
+        info
+          .then(function (res) {
+            let total = res.headers.get("X-Total-Count");
+            let totalBtn = Math.ceil(total / 9);
+            btnBox.innerHTML = null;
+            for (let i = 1; i <= totalBtn; i++) {
+              btnBox.append(createButton(i, i));
+            }
+            return res.json();
+          })
+          .then(function (datas) {
+            data = datas;
+            display(data);
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      }
+
+      function display(data) {
+        cont.innerHTML = "";
+
+        for (let i = 0; i < data.length; i++) {
+          let anchor = document.createElement("a");
+          anchor.setAttribute("href", "./destination.html");
+          anchor.style.textDecoration = "none";
+          anchor.addEventListener("click", function () {
+            let destination = [];
+            destination.push(data[i]);
+            localStorage.setItem("destination", JSON.stringify(destination));
+          });
+
+          let card = document.createElement("div");
+          card.className = "destination-card";
+
+          let imageContainer = document.createElement("div");
+          imageContainer.className = "card-image";
+
+          let image = document.createElement("img");
+          image.setAttribute("src", data[i].image);
+          image.setAttribute("alt", data[i].name);
+
+          let overlay = document.createElement("div");
+          overlay.className = "card-overlay";
+
+          let cardContent = document.createElement("div");
+          cardContent.className = "card-content";
+
+          let name = document.createElement("h3");
+          name.innerText = data[i].name;
+
+          let location = document.createElement("p");
+          location.innerText = data[i].location;
+
+          let cardMeta = document.createElement("div");
+          cardMeta.className = "card-meta";
+
+          let rating = document.createElement("div");
+          rating.className = "rating";
+          rating.innerHTML = `<i class="fas fa-star"></i> ${(Number(data[i].rating) / 20).toFixed(1)}`;
+
+          let price = document.createElement("div");
+          price.className = "price";
+          price.innerText = `৳ ${Number(data[i].price) * 10}`;
+
+          imageContainer.appendChild(image);
+          imageContainer.appendChild(overlay);
+          
+          cardMeta.appendChild(rating);
+          cardMeta.appendChild(price);
+          
+          cardContent.appendChild(name);
+          cardContent.appendChild(location);
+          cardContent.appendChild(cardMeta);
+          
+          card.appendChild(imageContainer);
+          card.appendChild(cardContent);
+          
+          anchor.appendChild(card);
+          cont.appendChild(anchor);
+        }
+      }
+
+      let upBtn = document.getElementById("increase");
+      upBtn.addEventListener("click", function () {
+        ratingBtn.value = "";
+        priceBtn.value = "";
+        data.sort(function (a, b) {
+          return a.price - b.price;
+        });
+        display(data);
+      });
+
+      let downBtn = document.getElementById("decrease");
+      downBtn.addEventListener("click", function () {
+        ratingBtn.value = "";
+        priceBtn.value = "";
+        data.sort(function (a, b) {
+          return b.price - a.price;
+        });
+        display(data);
+      });
+
+      let searchBar = document.getElementById("searchBar");
+      searchBar.addEventListener("input", function () {
+        let searched = data.filter(function (item) {
+          if (item.name.toUpperCase().includes(searchBar.value.toUpperCase())) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+        display(searched);
+      });
+
+      priceBtn.addEventListener("change", function () {
+        ratingBtn.value = "";
+        if (priceBtn.value == "") {
+          display(data);
+        } else {
+          let priceData = data.filter(function (ele) {
+            if (Number(ele.price * 10) < Number(priceBtn.value)) {
+              return true;
+            } else {
+              return false;
+            }
+          });
+          display(priceData);
+        }
+      });
+
+      ratingBtn.addEventListener("change", function () {
+        priceBtn.value = "";
+        if (ratingBtn.value == "") {
+          display(data);
+        } else {
+          let rate = data.filter(function (element) {
+            if (Number(element.rating / 20) < Number(ratingBtn.value)) {
+              return true;
+            } else {
+              return false;
+            }
+          });
+          display(rate);
+        }
+      });
+
+      function createButton(a, b) {
+        let btn = document.createElement("button");
+        btn.className = "page-btn";
+        btn.setAttribute("data-id", b);
+        btn.innerText = a;
+        btn.addEventListener("click", function (e) {
+          // Remove active class from all buttons
+          document.querySelectorAll('.page-btn').forEach(button => {
+            button.classList.remove('active');
+          });
+          // Add active class to clicked button
+          e.target.classList.add('active');
+          fetching(e.target.dataset.id);
+        });
+        
+        // Set first button as active by default
+        if (a === 1) {
+          btn.classList.add('active');
+        }
+        
+        return btn;
+      }
+    </script>
+    <script src="userLoginReg/logstatus.js"></script>
+    <script>
+      // Show or hide "My Bookings" nav item based on login status
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          const loginstatus = JSON.parse(localStorage.getItem('logStatus'));
+          const myBookingsNav = document.getElementById('myBookingsNav');
+          if (myBookingsNav) myBookingsNav.style.display = (loginstatus === true) ? 'block' : 'none';
+        } catch (e) {
+          console.error('Error toggling My Bookings nav:', e);
+        }
+      });
+    </script>
+  </body>
+</html>

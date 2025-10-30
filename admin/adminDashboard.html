@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TripBD Travel - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="adminDashboard.css" />
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>Trip<span class="danger">BD</span> Travel</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons"> close </span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="#" class="active">
+                    <span class="material-icons">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+            
+                <a href="bookings.html">
+                    <span class="material-icons">calendar_today</span>
+                    <h3>Service Bookings</h3>
+                </a>
+                <a href="destinationBookings.html">
+                    <span class="material-icons">luggage</span>
+                    <h3>Destination Bookings</h3>
+                </a>
+                
+                <a href="users.html">
+                    <span class="material-icons">people</span>
+                    <h3>User Management</h3>
+                </a>
+                <a href="services.html">
+                    <span class="material-icons">hiking</span>
+                    <h3>Services Management</h3>
+                </a>
+                 <a href="admin.html">
+                    <span class="material-icons">add</span>
+                    <h3>Destinations Management</h3>
+                </a>
+                <a href="../index.html">
+                    <span class="material-icons">logout</span>
+                    <h3 id="logout">Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <main>
+            <div class="main-header">
+                <h1>Dashboard</h1>
+                <div class="date">
+                    <input type="date" />
+                </div>
+            </div>
+
+            <div class="insights">
+                <div class="metric-card sales">
+                    <div class="metric-icon">
+                        <span class="material-icons">insert_chart</span>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Total Visitors</h3>
+                        <h1 id="total-deals">0000</h1>
+                        <p class="metric-trend positive">+12% from last month</p>
+                    </div>
+                </div>
+                
+                <div class="metric-card expenses">
+                    <div class="metric-icon">
+                        <span class="material-icons">bar_chart</span>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Total Profit</h3>
+                        <h1 id="total-sale">0000</h1>
+                        <p class="metric-trend positive">+8% from last month</p>
+                    </div>
+                </div>
+                
+                <div class="metric-card income">
+                    <div class="metric-icon">
+                        <span class="material-icons">stacked_line_chart</span>
+                    </div>
+                    <div class="metric-content">
+                        <h3>Total Income</h3>
+                        <h1 id="income">0000</h1>
+                        <p class="metric-trend positive">+15% from last month</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recent-orders">
+                <div class="section-header">
+                    <h2>Latest Destinations</h2>
+                    <a href="admin.html" class="view-all">View All</a>
+                </div>
+                <div class="card-list" id="adminSiteBoxId">
+                    <!-- Destinations will be loaded here -->
+                </div>
+            </div>
+        </main>
+
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons active">light_mode</span>
+                    <span class="material-icons">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Admin</b></p>
+                        <small class="text-muted">Last login: Today</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=7380ec&color=fff" alt="Admin" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-buttons">
+                    <a href="admin.html" class="action-btn primary">
+                        <span class="material-icons">add</span>
+                        <span>Add Destination</span>
+                    </a>
+                    <a href="#" class="action-btn success">
+                        <span class="material-icons">email</span>
+                        <span>Send Newsletter</span>
+                    </a>
+                    <a href="#" class="action-btn warning">
+                        <span class="material-icons">analytics</span>
+                        <span>Generate Report</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="recent-activities">
+                <h2>Recent Activities</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <span class="material-icons">person_add</span>
+                        </div>
+                        <div class="activity-details">
+                            <p>New visitor registered</p>
+                            <small>2 minutes ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <span class="material-icons">payment</span>
+                        </div>
+                        <div class="activity-details">
+                            <p>Payment received for Maldives trip</p>
+                            <small>1 hour ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <span class="material-icons">location_on</span>
+                        </div>
+                        <div class="activity-details">
+                            <p>New destination added: Bali</p>
+                            <small>3 hours ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="adminDashboard.js"></script>
+</body>
+
+</html>

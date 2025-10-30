@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Management - BDTrip Admin</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../config.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header h1 i {
+            color: #667eea;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .service-icon-overlay {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-name {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .service-description {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+
+        .service-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #5a6c7d;
+            font-size: 0.9rem;
+        }
+
+        .detail-item i {
+            color: #667eea;
+            font-size: 1rem;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-price small {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+
+        .service-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-edit {
+            background: #ffa502;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #ff8c00;
+            transform: translateY(-2px);
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .modal-header h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .close-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #c0392b;
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .form-actions button {
+            flex: 1;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .loading i {
+            font-size: 3rem;
+            animation: spin 1s linear infinite;
+        }
+
+        .no-services {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .no-services i {
+            font-size: 5rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .no-services h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .no-services p {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .header-buttons {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <i class="fas fa-hiking"></i>
+                Services Management
+            </h1>
+            <div class="header-buttons">
+                <button class="btn btn-primary" onclick="showAddModal()">
+                    <i class="fas fa-plus"></i>
+                    Add New Service
+                </button>
+                <a href="adminDashboard.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Dashboard
+                </a>
+            </div>
+        </div>
+
+        <div id="servicesContent">
+            <div class="loading">
+                <i class="fas fa-spinner"></i>
+                <p>Loading services...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">
+                    <i class="fas fa-plus-circle"></i>
+                    Add New Service
+                </h2>
+                <button class="close-btn" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="serviceForm" onsubmit="saveService(event)">
+                <input type="hidden" id="serviceId">
+                
+                <div class="form-group">
+                    <label>Service Name *</label>
+                    <input type="text" id="serviceName" required placeholder="e.g., Mountain Biking">
+                </div>
+
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea id="serviceDescription" required placeholder="Describe the service..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Image URL *</label>
+                    <input type="url" id="serviceImage" required placeholder="https://example.com/image.jpg">
+                </div>
+
+                <div class="form-group">
+                    <label>Price (৳) *</label>
+                    <input type="number" id="servicePrice" required placeholder="e.g., 2500">
+                </div>
+
+                <div class="form-group">
+                    <label>Duration *</label>
+                    <input type="text" id="serviceDuration" required placeholder="e.g., 3-5 hours">
+                </div>
+
+                <div class="form-group">
+                    <label>Group Size *</label>
+                    <input type="text" id="serviceGroupSize" required placeholder="e.g., 2-8 people">
+                </div>
+
+                <div class="form-group">
+                    <label>Font Awesome Icon *</label>
+                    <select id="serviceIcon" required>
+                        <option value="">Select an icon</option>
+                        <option value="fa-biking">🚴 Biking (fa-biking)</option>
+                        <option value="fa-water">🌊 Water (fa-water)</option>
+                        <option value="fa-motorcycle">🏍️ Motorcycle (fa-motorcycle)</option>
+                        <option value="fa-swimming-pool">🏊 Swimming (fa-swimming-pool)</option>
+                        <option value="fa-hiking">🥾 Hiking (fa-hiking)</option>
+                        <option value="fa-parachute-box">🪂 Parachute (fa-parachute-box)</option>
+                        <option value="fa-campground">⛺ Camping (fa-campground)</option>
+                        <option value="fa-mountain">🏔️ Mountain (fa-mountain)</option>
+                        <option value="fa-umbrella-beach">🏖️ Beach (fa-umbrella-beach)</option>
+                        <option value="fa-ship">🚢 Ship (fa-ship)</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">
+                        <i class="fas fa-times"></i>
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Save Service
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Load services on page load
+        document.addEventListener('DOMContentLoaded', loadServices);
+
+        async function loadServices() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/services`);
+                const services = await response.json();
+                displayServices(services);
+            } catch (error) {
+                console.error('Error loading services:', error);
+                document.getElementById('servicesContent').innerHTML = `
+                    <div class="no-services">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Error Loading Services</h3>
+                        <p>Unable to load services. Please try again.</p>
+                        <button class="btn btn-primary" onclick="loadServices()">
+                            <i class="fas fa-sync-alt"></i> Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        function displayServices(services) {
+            const container = document.getElementById('servicesContent');
+
+            if (!services || services.length === 0) {
+                container.innerHTML = `
+                    <div class="no-services">
+                        <i class="fas fa-hiking"></i>
+                        <h3>No Services Found</h3>
+                        <p>Start by adding your first service!</p>
+                        <button class="btn btn-primary" onclick="showAddModal()">
+                            <i class="fas fa-plus"></i> Add Service
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="services-grid">
+                    ${services.map(service => `
+                        <div class="service-card">
+                            <div style="position: relative;">
+                                <img src="${service.image}" alt="${service.name}" class="service-image" onerror="this.src='https://via.placeholder.com/350x220?text=No+Image'">
+                                <div class="service-icon-overlay">
+                                    <i class="fas ${service.icon}"></i>
+                                </div>
+                            </div>
+                            <div class="service-content">
+                                <h3 class="service-name">${service.name}</h3>
+                                <p class="service-description">${service.description}</p>
+                                <div class="service-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        ${service.duration}
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        ${service.groupSize}
+                                    </div>
+                                </div>
+                                <div class="service-price">
+                                    ৳${Number(service.price).toLocaleString()}
+                                    <small>/ person</small>
+                                </div>
+                                <div class="service-actions">
+                                    <button class="action-btn btn-edit" data-service='${JSON.stringify(service).replace(/'/g, "&apos;")}' onclick='editServiceById(this)'>
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+                                    <button class="action-btn btn-delete" onclick="deleteService('${service.id}', '${service.name.replace(/'/g, "\\'")}')">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function showAddModal() {
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-plus-circle"></i> Add New Service';
+            document.getElementById('serviceForm').reset();
+            document.getElementById('serviceId').value = '';
+            document.getElementById('serviceModal').classList.add('show');
+        }
+
+        function editServiceById(button) {
+            try {
+                const serviceJson = button.getAttribute('data-service');
+                const service = JSON.parse(serviceJson);
+                editService(service);
+            } catch (error) {
+                console.error('Error parsing service data:', error);
+                alert('Failed to load service data');
+            }
+        }
+
+        function editService(service) {
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-edit"></i> Edit Service';
+            // Convert ID to string to ensure consistency
+            document.getElementById('serviceId').value = String(service.id);
+            document.getElementById('serviceName').value = service.name;
+            document.getElementById('serviceDescription').value = service.description;
+            document.getElementById('serviceImage').value = service.image;
+            document.getElementById('servicePrice').value = service.price;
+            document.getElementById('serviceDuration').value = service.duration;
+            document.getElementById('serviceGroupSize').value = service.groupSize;
+            document.getElementById('serviceIcon').value = service.icon;
+            document.getElementById('serviceModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('serviceModal').classList.remove('show');
+        }
+
+        async function saveService(event) {
+            event.preventDefault();
+
+            const serviceId = document.getElementById('serviceId').value;
+            const serviceData = {
+                name: document.getElementById('serviceName').value,
+                description: document.getElementById('serviceDescription').value,
+                image: document.getElementById('serviceImage').value,
+                price: document.getElementById('servicePrice').value,
+                duration: document.getElementById('serviceDuration').value,
+                groupSize: document.getElementById('serviceGroupSize').value,
+                icon: document.getElementById('serviceIcon').value
+            };
+
+            console.log('Saving service:', serviceData);
+            console.log('Service ID:', serviceId);
+
+            try {
+                let response;
+                if (serviceId) {
+                    // Update existing service - use number ID to match db.json
+                    serviceData.id = Number(serviceId);
+                    console.log('Updating service with PUT:', `${API_BASE_URL}/services/${serviceId}`);
+                    response = await fetch(`${API_BASE_URL}/services/${serviceId}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(serviceData)
+                    });
+                } else {
+                    // Add new service
+                    console.log('Adding new service with POST');
+                    response = await fetch(`${API_BASE_URL}/services`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(serviceData)
+                    });
+                }
+
+                console.log('Response status:', response.status);
+                console.log('Response OK:', response.ok);
+
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Save successful:', result);
+                    alert(serviceId ? 'Service updated successfully!' : 'Service added successfully!');
+                    closeModal();
+                    loadServices();
+                } else {
+                    const errorText = await response.text();
+                    console.error('Failed to save. Status:', response.status, 'Error:', errorText);
+                    alert(`Failed to save service. Status: ${response.status}\nError: ${errorText}`);
+                }
+            } catch (error) {
+                console.error('Error saving service:', error);
+                alert(`Error saving service: ${error.message}`);
+            }
+        }
+
+        async function deleteService(id, name) {
+            if (!confirm(`Are you sure you want to delete "${name}"?\n\nThis action cannot be undone.`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/services/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    alert('Service deleted successfully!');
+                    loadServices();
+                } else {
+                    alert('Failed to delete service');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error deleting service');
+            }
+        }
+
+        // Close modal on outside click
+        document.getElementById('serviceModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

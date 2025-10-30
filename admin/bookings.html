@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../image/heritage-favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Service Bookings | Admin Dashboard</title>
+    <style>
+        :root {
+            --primary-color: #e37b21;
+            --primary-dark: #c8691c;
+            --primary-light: #f8a654;
+            --dark-color: #333;
+            --light-color: #f9f9f9;
+            --gray-color: #828282;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--light-color);
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-card h3 {
+            color: var(--gray-color);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .bookings-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-section select, .filter-section input {
+            padding: 10px 15px;
+            border: 2px solid #e1e5ee;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .table-responsive {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        thead th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 15px;
+            text-align: left;
+        }
+
+        tbody td {
+            padding: 15px;
+            border-bottom: 1px solid #e1e5ee;
+        }
+
+        tbody tr:hover {
+            background: var(--light-color);
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-confirmed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .action-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-right: 5px;
+            transition: var(--transition);
+        }
+
+        .btn-confirm {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-confirm:hover {
+            background: #218838;
+        }
+
+        .btn-cancel {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-cancel:hover {
+            background: #c82333;
+        }
+
+        .btn-delete {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #5a6268;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-color);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1><i class="fas fa-calendar-check me-3"></i>Service Bookings Management</h1>
+                    <p class="mb-0 mt-2">Manage all adventure service bookings</p>
+                </div>
+                <a href="adminDashboard.html" class="back-btn">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3><i class="fas fa-list me-2"></i>Total Bookings</h3>
+                <div class="number" id="totalBookings">0</div>
+            </div>
+            <div class="stat-card">
+                <h3><i class="fas fa-clock me-2"></i>Pending</h3>
+                <div class="number" id="pendingBookings">0</div>
+            </div>
+            <div class="stat-card">
+                <h3><i class="fas fa-check-circle me-2"></i>Confirmed</h3>
+                <div class="number" id="confirmedBookings">0</div>
+            </div>
+            <div class="stat-card">
+                <h3><i class="fas fa-times-circle me-2"></i>Cancelled</h3>
+                <div class="number" id="cancelledBookings">0</div>
+            </div>
+        </div>
+
+        <div class="bookings-container">
+            <h2 class="mb-4"><i class="fas fa-table me-2"></i>All Bookings</h2>
+            
+            <div class="filter-section">
+                <select id="statusFilter" class="form-select">
+                    <option value="">All Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+                
+                <select id="serviceFilter" class="form-select">
+                    <option value="">All Services</option>
+                    <option value="Mountain Biking">Mountain Biking</option>
+                    <option value="River Rafting">River Rafting</option>
+                    <option value="Motor Biking">Motor Biking</option>
+                    <option value="Scuba Diving">Scuba Diving</option>
+                    <option value="Trekking">Trekking</option>
+                    <option value="Paragliding">Paragliding</option>
+                </select>
+                
+                <input type="date" id="dateFilter" class="form-control" placeholder="Filter by date">
+                
+                <button onclick="loadBookings()" class="btn btn-primary">
+                    <i class="fas fa-sync-alt me-2"></i>Refresh
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Service</th>
+                            <th>Customer</th>
+                            <th>People</th>
+                            <th>Date</th>
+                            <th>Booking Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTable">
+                        <tr>
+                            <td colspan="8" class="text-center">
+                                <i class="fas fa-spinner fa-spin me-2"></i>Loading bookings...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+        let allBookings = [];
+
+        // Load bookings from API
+        async function loadBookings() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/serviceBookings`);
+                if (response.ok) {
+                    allBookings = await response.json();
+                    updateStats();
+                    displayBookings(allBookings);
+                } else {
+                    throw new Error('Failed to fetch bookings');
+                }
+            } catch (error) {
+                console.error('Error loading bookings:', error);
+                document.getElementById('bookingsTable').innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center text-danger">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Error loading bookings. Please make sure JSON Server is running.
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = allBookings.length;
+            const pending = allBookings.filter(b => b.status === 'Pending').length;
+            const confirmed = allBookings.filter(b => b.status === 'Confirmed').length;
+            const cancelled = allBookings.filter(b => b.status === 'Cancelled').length;
+
+            document.getElementById('totalBookings').textContent = total;
+            document.getElementById('pendingBookings').textContent = pending;
+            document.getElementById('confirmedBookings').textContent = confirmed;
+            document.getElementById('cancelledBookings').textContent = cancelled;
+        }
+
+        // Display bookings in table
+        function displayBookings(bookings) {
+            const tableBody = document.getElementById('bookingsTable');
+            
+            if (bookings.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="8">
+                            <div class="empty-state">
+                                <i class="fas fa-calendar-times"></i>
+                                <h3>No Bookings Found</h3>
+                                <p>There are no service bookings yet.</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tableBody.innerHTML = bookings.map(booking => `
+                <tr>
+                    <td>${booking.id}</td>
+                    <td><strong>${booking.service}</strong></td>
+                    <td>
+                        <div>${booking.email}</div>
+                        <small class="text-muted">${booking.phone}</small>
+                    </td>
+                    <td>${booking.people}</td>
+                    <td>${formatDate(booking.date)}</td>
+                    <td>${formatDateTime(booking.bookingDate)}</td>
+                    <td>
+                        <span class="status-badge status-${booking.status.toLowerCase()}">
+                            ${booking.status}
+                        </span>
+                    </td>
+                    <td>
+                        ${booking.status === 'Pending' ? `
+                            <button class="action-btn btn-confirm" onclick="updateStatus('${booking.id}', 'Confirmed')">
+                                <i class="fas fa-check"></i> Confirm
+                            </button>
+                            <button class="action-btn btn-cancel" onclick="updateStatus('${booking.id}', 'Cancelled')">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        ` : ''}
+                        <button class="action-btn btn-delete" onclick="deleteBooking('${booking.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Update booking status
+        async function updateStatus(bookingId, newStatus) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/serviceBookings/${bookingId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ status: newStatus })
+                });
+
+                if (response.ok) {
+                    alert(`Booking ${newStatus.toLowerCase()} successfully!`);
+                    loadBookings();
+                } else {
+                    throw new Error('Failed to update booking');
+                }
+            } catch (error) {
+                console.error('Error updating booking:', error);
+                alert('Error updating booking. Please try again.');
+            }
+        }
+
+        // Delete booking
+        async function deleteBooking(bookingId) {
+            if (!confirm('Are you sure you want to delete this booking?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/serviceBookings/${bookingId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    alert('Booking deleted successfully!');
+                    loadBookings();
+                } else {
+                    throw new Error('Failed to delete booking');
+                }
+            } catch (error) {
+                console.error('Error deleting booking:', error);
+                alert('Error deleting booking. Please try again.');
+            }
+        }
+
+        // Filter bookings
+        function filterBookings() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            const serviceFilter = document.getElementById('serviceFilter').value;
+            const dateFilter = document.getElementById('dateFilter').value;
+
+            let filtered = allBookings;
+
+            if (statusFilter) {
+                filtered = filtered.filter(b => b.status === statusFilter);
+            }
+
+            if (serviceFilter) {
+                filtered = filtered.filter(b => b.service === serviceFilter);
+            }
+
+            if (dateFilter) {
+                filtered = filtered.filter(b => b.date === dateFilter);
+            }
+
+            displayBookings(filtered);
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
+            });
+        }
+
+        // Format date and time
+        function formatDateTime(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Add event listeners for filters
+        document.getElementById('statusFilter').addEventListener('change', filterBookings);
+        document.getElementById('serviceFilter').addEventListener('change', filterBookings);
+        document.getElementById('dateFilter').addEventListener('change', filterBookings);
+
+        // Load bookings on page load
+        loadBookings();
+
+        // Auto-refresh every 30 seconds
+        setInterval(loadBookings, 30000);
+    </script>
+</body>
+</html>

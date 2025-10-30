@@ -1,0 +1,25 @@
+{
+  "name": "heritage-bangladesh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MouS0926/heritage-bangladesh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "scripts": {
+    "start:server": "node server/server.js",
+    "dev:server": "nodemon server/server.js",
+    "migrate:db": "node server/migrate.js",
+    "start:frontend": "python3 -m http.server 8000",
+    "start:all": "bash -c \"npm run start:server & npm run start:frontend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MouS0926/heritage-bangladesh/issues"
+  },
+  "homepage": "https://github.com/MouS0926/heritage-bangladesh#readme"
+}

@@ -1,0 +1,1566 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BDTrip - Explore Bangladesh</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="icon" type="image/svg+xml" href="image/heritage-favicon.svg">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Righteous&family=Tilt+Prism&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <script src="IndexScript/jquery.min.js"></script>
+    <script src="IndexScript/owl.carousel.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #e37b21;
+            --primary-dark: #c8691c;
+            --primary-light: #f8a654;
+            --dark-color: #222222;
+            --light-color: #f9f9f9;
+            --gray-color: #555555;
+            --text-light: #ffffff;
+            --text-dark: #222222;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        /***************** navbar ************/
+        .topColor {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .logo-text {
+            font-family: 'Tilt Prism', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-text span {
+            color: var(--primary-color);
+        }
+
+        .scroll .logo-text {
+            color: var(--text-dark);
+            text-shadow: none;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .nav-link:focus,
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-item {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .scroll {
+            background-color: var(--text-light);
+            color: var(--text-dark);
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+
+        .scroll a {
+            color: var(--text-dark);
+        }
+
+        .scroll a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-item:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .nav-item .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-item .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .reg-btn {
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            padding: 10px 25px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(227, 123, 33, 0.3);
+            color: white;
+        }
+
+        .reg-btn:hover {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(227, 123, 33, 0.4);
+            color: white;
+        }
+
+        /* ************************ hero-section-start ***************************/
+        .heroSection {
+            background: linear-gradient(to bottom right, rgba(7, 154, 50, 0.7), rgba(5, 5, 5, 0.85)), url(https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80);
+            height: 100vh;
+            min-height: 700px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            font-family: 'Tilt Prism', cursive;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+        }
+
+        .heroImg {
+            margin-top: 50px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .second-h1 {
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .paraBox {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .searchBox {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .indexBtn {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* ************************ hero-section-end ***************************/
+
+        /* ================================= popular-destination ===========================*/
+        .owl-carousel .owl-item img {
+            display: block;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .popularDest {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+
+        .popularDest h1 {
+            font-family: 'Tilt Prism', cursive;
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .popularDest h1 span {
+            color: var(--primary-color);
+        }
+
+        .owl-carousel {
+            padding: 50px 0;
+        }
+
+        .popCard {
+            padding: 0;
+            border: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            background: white;
+            height: 100%;
+        }
+
+        .popCard:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .popCard:hover .owl-carousel .owl-item img {
+            transform: scale(1.1);
+        }
+
+        .popCard h3 {
+            font-weight: 700;
+            color: var(--text-dark);
+            padding: 15px 15px 5px;
+            margin-bottom: 0;
+            font-size: 1.4rem;
+        }
+
+        .popCard p {
+            color: var(--gray-color);
+            padding: 0 15px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .price-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px 15px;
+        }
+
+        .price-box span {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .bookBtn {
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            background-color: transparent;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 8px 20px;
+            transition: var(--transition);
+        }
+
+        .bookBtn:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .owl-nav {
+            display: block !important;
+            position: absolute;
+            top: -80px;
+            right: 0;
+            text-align: right;
+        }
+
+        .owl-carousel .owl-nav button.owl-next,
+        .owl-carousel .owl-nav button.owl-prev {
+            background-color: #fff !important;
+            color: var(--primary-color) !important;
+            border: none;
+            padding: 10px 15px !important;
+            font: inherit;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            margin-left: 10px;
+            transition: var(--transition);
+        }
+
+        .owl-theme .owl-nav [class*=owl-]:hover {
+            background: var(--primary-color) !important;
+            color: #FFF !important;
+            transform: translateY(-2px);
+        }
+
+        /* ================================= popular-destination ===========================*/
+
+        /*====================================== stories ============================*/
+        .storiesSection {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+
+        .storiesSection h1 {
+            font-family: 'Tilt Prism', cursive;
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .storiesSection h1 span {
+            color: var(--primary-color);
+        }
+
+        .storiesSection p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: var(--gray-color);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .numberBox {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Tilt Prism', cursive;
+            font-size: 40px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-top: 40px;
+        }
+
+        .numberBox>.box {
+            background-color: #fff;
+            padding: 20px 15px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            flex: 1;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .numberBox>.box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .numberBox p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            margin-top: 10px;
+            margin-bottom: 0;
+            color: var(--gray-color);
+            font-weight: 600;
+        }
+
+        /*====================================== stories-End ============================*/
+
+        /*============================ about-adventure =======================*/
+        .testimonial-card {
+            padding: 30px;
+            border-radius: 15px;
+            height: 100%;
+            text-align: center;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--gray-color);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .rating {
+            margin-bottom: 15px;
+        }
+
+        .rating i {
+            color: var(--primary-color);
+            margin: 0 2px;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-card h5 {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .testimonial-card p:last-child {
+            color: var(--gray-color);
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        #testimonial>.owl-nav {
+            position: relative;
+            top: 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .owl-dots {
+            display: none;
+        }
+
+        /*============================ about-adventure-end =======================*/
+
+        /*=========================== Video Section ===============================*/
+        .videoSection {
+            padding: 100px 0;
+            background: linear-gradient(to right, rgba(227, 123, 33, 0.95), rgba(248, 166, 84, 0.95));
+            color: var(--text-light);
+        }
+
+        .videoSection h1 {
+            font-family: 'Tilt Prism', cursive;
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .videoSection h1 span {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .videoSection p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 50px;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .video-card:hover .play-button {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .video-content {
+            padding: 20px;
+        }
+
+        .video-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .video-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /*=========================== getstated ================================*/
+        .getSection {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(to right, rgba(34, 34, 34, 0.9), rgba(68, 68, 68, 0.9)), url(https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80);
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+        }
+
+        .getSection h1 {
+            font-family: 'Tilt Prism', cursive;
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .getSection h1 span {
+            color: var(--primary-color);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .getSection p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .start-btn {
+            background: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            padding: 12px 30px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-btn:hover {
+            background: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .getstarted {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 60px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+        }
+
+        footer h5 {
+            font-weight: 700;
+            font-family: 'Tilt Prism', cursive;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        footer li a {
+            font-family: 'Montserrat', sans-serif;
+            color: #cccccc;
+            transition: var(--transition);
+            padding: 5px 0 !important;
+            font-weight: 500;
+        }
+
+        footer li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px !important;
+        }
+
+        footer p {
+            font-family: 'Montserrat', sans-serif;
+            color: #cccccc;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Ensure muted footer links are visible on dark footer */
+        footer .text-muted {
+            color: #cccccc !important;
+        }
+
+        footer .text-muted:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /*=========================== map-section =====================*/
+        .mapSection {
+            padding: 100px 0;
+            text-align: center;
+            background-color: white;
+        }
+
+        .mapSection h1 {
+            font-family: 'Tilt Prism', cursive;
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .mapSection h1 span {
+            color: var(--primary-color);
+        }
+
+        .mapSection p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: var(--gray-color);
+            line-height: 1.6;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        /*==================== responsive ===================================*/
+        @media (max-width: 768px) {
+
+            .popularDest h1,
+            .storiesSection h1,
+            .heroSection h1,
+            .mapSection h1,
+            .getSection h1,
+            .videoSection h1 {
+                font-size: 2.2rem;
+            }
+
+            .heroSection {
+                height: auto;
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+
+            .paraBox {
+                font-size: 16px;
+            }
+
+            .indexBtn {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .numberBox {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .storiesSection {
+                padding: 60px 0;
+            }
+
+            .getSection {
+                padding: 60px 0;
+            }
+
+            .video-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .popularDest h1,
+            .storiesSection h1,
+            .heroSection h1,
+            .mapSection h1,
+            .getSection h1,
+            .videoSection h1 {
+                font-size: 1.8rem;
+            }
+
+            .heroSection {
+                padding: 100px 0 40px;
+            }
+
+            .paraBox {
+                font-size: 15px;
+            }
+
+            .reg-btn {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .nav-link {
+                font-size: 1rem;
+            }
+        }
+
+        .mapSection img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        /* Map thumbnail overrides */
+        .map-thumbnail {
+            max-width: 380px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            cursor: zoom-in;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .map-thumbnail:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+        }
+        .map-thumbnail-wrapper {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        @media (max-width: 576px) {
+            .map-thumbnail {
+                max-width: 92%;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <!--*******************************  navbar *******************-->
+    <nav class="navbar navbar-expand-lg fixed-top topColor" id="navBar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="logo-text">BD<span>Trip</span></div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse float-xl-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./discover.html">Discover</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Services</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item" id="myBookingsNav" style="display:none;">
+                        <a class="nav-link" href="my-bookings.html">My Bookings</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="userLoginReg/login.html" id="logdiv">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary reg-btn" href="userLoginReg/registration.html"
+                            id="registerDiv">Register</a>
+                    </li>
+                    <!-- Admin login intentionally hidden from normal users. Use the secret spot (bottom-right corner) to reveal/navigate. -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--*******************************  navbarEnd *******************-->
+
+    <div class="d-flex heroSection">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="lc-block mb-4">
+                        <div editable="rich">
+                            <h1 class="display-1 fw-bolder wow animate__animated animate__fadeInDown">EXPLORE
+                                BANGLADESH'S</h1>
+                            <h1 class="display-1 fw-bolder second-h1 wow animate__animated animate__fadeInDown">RICH
+                                HERITAGE</h1>
+                            <p class="paraBox">Discover the cultural treasures, historical landmarks, and natural
+                                wonders of Bangladesh. From ancient archaeological sites to vibrant traditional
+                                festivals, experience the soul of this beautiful country.</p>
+                        </div>
+                    </div>
+
+                    <div class="1">
+                        <div class="indexBtn">
+                            <a href="blog.html" class="btn btn-primary reg-btn">Latest Blogs</a>
+                            <a href="discover.html" class="btn btn-primary reg-btn">Discover New Places</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 d-none d-sm-block">
+                    <img src="image/Boy-Picture.png" alt="Traveler exploring Bangladesh"
+                        class="wow animate__animated animate__fadeInUp heroImg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--*************************** popular-destination ******************-->
+    <section class="popularDest">
+    <div class="container">
+        <section id="demos">
+            <h1 class="fw-bolder wow animate__animated animate__fadeInDown">FIND <span>POPULAR</span></h1>
+            <h1 class="fw-bolder wow animate__animated animate__fadeInDown">DESTINATIONS</h1>
+            <div class="owl-carousel owl-theme wow animate__animated animate__fadeIn" id="desti">
+                <!-- Destinations will be loaded dynamically from database -->
+            </div>
+        </section>
+    </div>
+</section>
+
+<!-- Add this JavaScript at the end of your file -->
+<script>
+// Define API Base URL
+const API_BASE_URL = 'http://localhost:3000';
+
+// Load popular destinations from database
+async function loadPopularDestinations() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/destinations`);
+        const destinations = await response.json();
+        
+        const destiCarousel = document.getElementById('desti');
+        destiCarousel.innerHTML = '';
+        
+        // Sort by rating and get top destinations
+        const popularDestinations = destinations
+            .sort((a, b) => b.rating - a.rating)
+            .slice(0, 10); // Get top 10 destinations
+        
+        popularDestinations.forEach(dest => {
+            const card = `
+                <div class="item card popCard" data-discover-url="discover.html">
+                    <img src="${dest.image}" alt="${dest.name}">
+                    <h3>${dest.name}</h3>
+                    <p>${dest.location}</p>
+                    <div class="price-box">
+                        <p><span>৳ ${dest.price}</span>/person</p>
+                        <button class="btn btn-primary bookBtn view-more-btn">View More</button>
+                    </div>
+                </div>
+            `;
+            destiCarousel.innerHTML += card;
+        });
+        
+        // Reinitialize owl carousel after loading data
+        if (typeof $ !== 'undefined' && $.fn.owlCarousel) {
+            $('#desti').owlCarousel('destroy');
+            $('#desti').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: { items: 1 },
+                    600: { items: 2 },
+                    1000: { items: 3 }
+                }
+            });
+        }
+        
+        // Reinitialize event listeners
+        initializeCardListeners();
+        
+    } catch (error) {
+        console.error('Error loading destinations:', error);
+        document.getElementById('desti').innerHTML = '<p style="text-align: center; color: red;">Failed to load destinations. Please try again later.</p>';
+    }
+}
+
+// Initialize card event listeners
+function initializeCardListeners() {
+    // View More button click - go to discover page
+    document.querySelectorAll('.view-more-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent card click event
+            const card = this.closest('.popCard');
+            const discoverUrl = card.getAttribute('data-discover-url');
+            window.location.href = discoverUrl;
+        });
+    });
+
+    // Add hover effects and cursor styles
+    const cards = document.querySelectorAll('.popCard');
+    cards.forEach(card => {
+        // Add pointer cursor to entire card
+        card.style.cursor = 'pointer';
+        
+        // Add hover effect
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+
+    // Style the View More buttons differently
+    const viewMoreButtons = document.querySelectorAll('.view-more-btn');
+    viewMoreButtons.forEach(button => {
+        button.style.cursor = 'pointer';
+        button.style.pointerEvents = 'auto';
+        
+        // Add hover effect for button
+        button.addEventListener('mouseenter', function(e) {
+            e.stopPropagation();
+            this.style.backgroundColor = '#e6730f';
+            this.style.borderColor = '#e6730f';
+        });
+        
+        button.addEventListener('mouseleave', function(e) {
+            e.stopPropagation();
+            this.style.backgroundColor = '';
+            this.style.borderColor = '';
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Load destinations on page load
+    loadPopularDestinations();
+});
+</script>
+
+<!-- Optional: Add some CSS for better visual feedback -->
+<style>
+.popCard {
+    position: relative;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.popCard:hover {
+    border-color: #ff8a23;
+    box-shadow: 0 8px 25px rgba(255, 138, 35, 0.15);
+}
+
+.view-more-btn {
+    position: relative;
+    z-index: 10;
+}
+
+.price-box {
+    position: relative;
+    z-index: 5;
+}
+
+/* Ensure the button doesn't get the card's hover transform */
+.view-more-btn:hover {
+    transform: none !important;
+}
+</style>
+
+    <!--**************************** stories *****************-->
+    <section class="storiesSection">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="image/Boy-Picture-2.png" alt="Travel stories"
+                        class="wow animate__animated animate__fadeInLeft">
+                </div>
+                <div class="col-md-6">
+                    <h1 class="fw-bolder wow animate__animated animate__zoomIn">OUR <span>STORIES</span> WITH</h1>
+                    <h1 class="fw-bolder wow animate__animated animate__zoomIn">ADVENTURES</h1>
+                    <p class="wow animate__animated animate__zoomIn">We are experienced in bringing adventures to start
+                        their journey; all outdoor destinations in Bangladesh are our specialties.</p>
+                    <p class="wow animate__animated animate__zoomIn">So don't hesitate to start your adventure right
+                        now; nature has already called you!​</p>
+
+                    <div class="numberBox">
+                        <div class="box wow animate__animated animate__bounceIn">
+                            12K+
+                            <p>Success Journey</p>
+                        </div>
+                        <div class="box wow animate__animated animate__bounceIn">
+                            16+
+                            <p>Awards Winning</p>
+                        </div>
+                        <div class="box wow animate__animated animate__bounceIn">
+                            20+
+                            <p>Years of Experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--========================== Video Section ===========================-->
+<section class="videoSection">
+    <div class="container">
+        <h1 class="fw-bolder wow animate__animated animate__fadeInDown">EXPLORE <span>BANGLADESH</span></h1>
+        <h1 class="fw-bolder wow animate__animated animate__fadeInDown">THROUGH OUR LENS</h1>
+        <p class="wow animate__animated animate__fadeIn">Watch our latest videos showcasing the beauty, culture, and
+            adventures that await you in Bangladesh.</p>
+
+        <div class="video-container" id="videoContainer">
+            <!-- Video 1: Local Video -->
+            <div class="video-card wow animate__animated animate__fadeInUp">
+                <div class="video-thumbnail" style="height: auto;">
+                    <div class="ratio ratio-16x9">
+                        <video 
+                            controls 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <source src="video/1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Chittagong Beach</h3>
+                </div>
+            </div>
+            
+            <!-- Video 2: Local Video -->
+            <div class="video-card wow animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                <div class="video-thumbnail" style="height: auto;">
+                    <div class="ratio ratio-16x9">
+                        <video 
+                            controls 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <source src="video/2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Cox's Bazar Beach</h3>
+                </div>
+            </div>
+            
+            <!-- Video 3: Local Video -->
+            <div class="video-card wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                <div class="video-thumbnail" style="height: auto;">
+                    <div class="ratio ratio-16x9">
+                        <video 
+                            controls 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <source src="video/3.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Srimangal Tea Gardens</h3>
+                </div>
+            </div>
+            
+            <!-- Video 4: Local Video -->
+            <div class="video-card wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+                <div class="video-thumbnail" style="height: auto;">
+                    <div class="ratio ratio-16x9">
+                        <video 
+                            controls 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <source src="video/4.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Historical Heritage</h3>
+                </div>
+            </div>
+            
+            <!-- Video 5: Local Video -->
+            <div class="video-card wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+                <div class="video-thumbnail" style="height: auto;">
+                    <div class="ratio ratio-16x9">
+                        <video 
+                            controls 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <source src="video/5.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Adventure Awaits</h3>
+                </div>
+            </div>
+
+             <!-- Video 6: Local Video -->
+            <div class="video-card wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+                <div class="video-thumbnail" style="height: auto;">
+                    <div class="ratio ratio-16x9">
+                        <video 
+                            controls 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <source src="video/6.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="video-content">
+                    <h3>Adventure Awaits</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!--========================== BD-map ===========================-->
+    <section class="mapSection">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="fw-bolder wow animate__animated animate__zoomIn">START YOUR NEW <span>ADVENTURE</span>
+                    </h1>
+                    <h1 class="fw-bolder wow animate__animated animate__zoomIn">AROUND BANGLADESH</h1>
+                    <p>There are still many amazing destinations</p>
+                    <p> scattered around Bangladesh, you should</p>
+                    <p> try to visit all of them</p>
+                    <div class="map-thumbnail-wrapper wow animate__animated animate__fadeIn">
+                        <img src="image/bangladesh-map.png" alt="Bangladesh Map" class="map-thumbnail img-fluid" loading="lazy" data-bs-toggle="modal" data-bs-target="#bdMapModal">
+                        <div class="small text-muted mt-2">Click to view full size</div>
+                    </div>
+                    <!-- Modal for full-size Bangladesh map -->
+                    <div class="modal fade" id="bdMapModal" tabindex="-1" aria-labelledby="bdMapModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content bg-dark border-0">
+                          <div class="modal-header border-0">
+                            <h5 class="modal-title text-white" id="bdMapModalLabel">Bangladesh Map</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body p-0 bg-black">
+                            <img src="image/bangladesh-map.png" alt="Bangladesh Map full size" class="img-fluid w-100 rounded-2">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--======================= adventure-about-us =====================-->
+    <section class="storiesSection">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="fw-bolder wow animate__animated animate__zoomIn"> WHAT ADVENTURERS</h1>
+                    <h1 class="fw-bolder wow animate__animated animate__zoomIn">SAY <span>ABOUT US</span></h1>
+                    <p class="wow animate__animated animate__zoomIn">See and discover what adventurers tell us about
+                        their journey with us, we always listen to whatever experience they have to say</p>
+
+                    <section id="demos">
+                        <div class="owl-carousel owl-theme wow animate__animated animate__fadeInDown" id="testimonial">
+                            <div class="item card popCard testimonial-card">
+                                <div class="">
+                                    <p>"My trip to Sundarbans was absolutely breathtaking! The guides were
+                                        knowledgeable, and the whole experience was well-organized. I'll definitely book
+                                        with BDTrip again!"</p>
+                                    <div class="rating">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                    <h5>Rahman Khan</h5>
+                                    <p>Photographer</p>
+                                </div>
+                            </div>
+
+                            <div class="item card popCard testimonial-card">
+                                <div class="">
+                                    <p>"The cultural tour of Old Dhaka was an eye-opening experience. I learned so much
+                                        about Bangladesh's rich history and traditions. Highly recommended for anyone
+                                        interested in heritage!"</p>
+                                    <div class="rating">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                    <h5>Fatima Begum</h5>
+                                    <p>History Teacher</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-6">
+                    <img src="image/girl.png" alt="Happy traveler" class="wow animate__animated animate__fadeInRight">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=============== get-started-section ===================-->
+    <section class="getSection owl-theme wow animate__animated animate__fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="getstarted">
+                        <h1 class="fw-bolder owl-theme wow animate__animated animate__fadeInDown">GET STARTED WITH</h1>
+                        <h1 class="fw-bolder owl-theme wow animate__animated animate__fadeInDown"><span>BDTRIP</span>
+                        </h1>
+                        <br>
+                        <p class="owl-theme wow animate__animated animate__fadeInDown">Subscribe and find super
+                            attractive price quotes</p>
+                        <p class="owl-theme wow animate__animated animate__fadeInDown">from us, we wait for you at the
+                            best destination</p>
+                        <a href="userLoginReg/login.html" id="logdiv"
+                            class="btn btn-xs btn-primary start-btn wow animate__animated animate__bounceIn">
+                            Get Started
+                        </a>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-5 wow animate__animated animate__fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="logo-text" style="font-size: 1.8rem;">BD<span>Trip</span></div>
+                    <p>Discover the rich cultural heritage and natural beauty of Bangladesh with our expertly curated
+                        tours and travel experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>ABOUT</h5>
+                    <ul class="nav flex-column">
+                        <li class="mb-2"><a href="about.html" class="nav-link p-0 text-muted">About Us</a></li>
+                        <li class="mb-2"><a href="service.html" class="nav-link p-0 text-muted">Services</a></li>
+                        <li class="mb-2"><a href="blog.html" class="nav-link p-0 text-muted">News & Blogs</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>DESTINATIONS</h5>
+                    <ul class="nav flex-column">
+                        <li class="mb-2"><a href="discover.html" class="nav-link p-0 text-muted">Popular Places</a></li>
+                        <li class="mb-2"><a href="discover.html" class="nav-link p-0 text-muted">Cultural Sites</a></li>
+                        <li class="mb-2"><a href="discover.html" class="nav-link p-0 text-muted">Natural Wonders</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>SUPPORT</h5>
+                    <ul class="nav flex-column">
+                        <li class="mb-2"><a href="#" class="nav-link p-0 text-muted">FAQ</a></li>
+                        <li class="mb-2"><a href="#" class="nav-link p-0 text-muted">Support Center</a></li>
+                        <li class="mb-2"><a href="#" class="nav-link p-0 text-muted">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>CONTACT</h5>
+                    <ul class="nav flex-column">
+                        <li class="mb-2"><a href="#" class="nav-link p-0 text-muted"><i
+                                    class="fas fa-map-marker-alt me-2"></i>Dhaka, Bangladesh</a></li>
+                        <li class="mb-2"><a href="#" class="nav-link p-0 text-muted"><i
+                                    class="fas fa-phone me-2"></i>+880 1234-567890</a></li>
+                        <li class="mb-2"><a href="#" class="nav-link p-0 text-muted"><i
+                                    class="fas fa-envelope me-2"></i>info@bdtrip.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                        <p>© 2025 BDTrip, All rights reserved.</p>
+                        <div>
+                            <a href="#" class="text-muted me-3">Terms & Agreements</a>
+                            <a href="#" class="text-muted" style="color: var(--primary-color) !important;">Privacy &
+                                Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--*********************** script ****************-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#desti').owlCarousel({
+                loop: true,
+                margin: 20,
+                responsiveClass: true,
+                nav: true,
+                navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 2,
+                        nav: false
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true,
+                        loop: false,
+                        margin: 30
+                    }
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#testimonial').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                nav: true,
+                navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 1,
+                        nav: false
+                    },
+                    1000: {
+                        items: 1,
+                        nav: true,
+                        loop: false,
+                        margin: 30
+                    }
+                }
+            })
+        })
+    </script>
+
+    <script>
+        function navbarColour() {
+            let navbar = document.getElementById("navBar")
+            let scrollValue = window.scrollY
+
+            if (scrollValue < 500) {
+                navbar.classList.remove("scroll")
+            } else {
+                navbar.classList.add("scroll")
+            }
+        }
+
+        window.addEventListener("scroll", navbarColour)
+    </script>
+
+    <script src="userLoginReg/logstatus.js"></script>
+    <script>
+        // Show or hide "My Bookings" nav item based on login status
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+                const loginstatus = JSON.parse(localStorage.getItem('logStatus'));
+                const myBookingsNav = document.getElementById('myBookingsNav');
+                if (myBookingsNav) {
+                    myBookingsNav.style.display = loginstatus === true ? 'block' : 'none';
+                }
+
+                // Also update the top-right login/register text if needed (in case logstatus.js wasn't run yet)
+                const logDivs = document.querySelectorAll('#logdiv');
+                const registerDiv = document.getElementById('registerDiv');
+                if (loginstatus === true) {
+                    // show 'My Bookings' and ensure Register shows Logout (logstatus.js already handles this on most pages)
+                    if (myBookingsNav) myBookingsNav.style.display = 'block';
+                } else {
+                    if (myBookingsNav) myBookingsNav.style.display = 'none';
+                }
+            } catch (e) {
+                console.error('Error toggling My Bookings nav:', e);
+            }
+        });
+    </script>
+        <!-- Invisible admin access hotspot (click 3 times quickly bottom-right) -->
+        <div id="secretAdminSpot" aria-hidden="true" style="position:fixed; right:8px; bottom:8px; width:32px; height:32px; opacity:0; z-index:9999; cursor:pointer;"></div>
+        <script>
+            // Triple-click the bottom-right corner to open admin login
+            (function() {
+                const spot = document.getElementById('secretAdminSpot');
+                if (!spot) return;
+                let clicks = 0;
+                let timer = null;
+                spot.addEventListener('click', function () {
+                    clicks++;
+                    if (timer) clearTimeout(timer);
+                    timer = setTimeout(() => { clicks = 0; }, 1500);
+                    if (clicks >= 3) {
+                        // navigate to admin login (opens in same tab)
+                        window.location.href = 'login/adminlogin.html';
+                    }
+                });
+                // Optional: also support long-press (press & hold for 1.5s)
+                let holdTimer = null;
+                spot.addEventListener('mousedown', function() {
+                    holdTimer = setTimeout(() => { window.location.href = 'login/adminlogin.html'; }, 1500);
+                });
+                ['mouseup','mouseleave'].forEach(evt => spot.addEventListener(evt, function(){ if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }}));
+            })();
+        </script>
+        <script src="admin-shortcut.js"></script>
+</body>
+
+</html>
