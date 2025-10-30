@@ -14,7 +14,7 @@ const fs = require("fs");
 const path = require("path");
 const mongoose = require("mongoose");
 
-const MONGO_URL = process.env.MONGO_URL || "mongodb+srv://soheleight234_db_user:1jKiWgPdaNkgzZ9Y@cluster0.d8o2jpp.mongodb.net/?appName=Cluster0";
+const MONGO_URL = process.env.MONGO_URL || "mongodb+srv://:@cluster0.d8o2jpp.mongodb.net/?appName=Cluster0";
 
 async function main() {
   await mongoose.connect(MONGO_URL, {
