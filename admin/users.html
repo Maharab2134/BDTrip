@@ -699,6 +699,41 @@
         </div>
     </div>
 
+    <!-- View User Modal -->
+    <div id="userViewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>User Details</h2>
+                <button class="close-btn" onclick="closeViewModal()">×</button>
+            </div>
+            <div id="userDetailsContent">
+                <div class="form-group">
+                    <label>ID</label>
+                    <div id="viewUserId"></div>
+                </div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <div id="viewUserName"></div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <div id="viewUserEmail"></div>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <div id="viewUserPhone"></div>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <div id="viewUserAddress"></div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-cancel" onclick="closeViewModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         let allUsers = [];
 
@@ -774,12 +809,16 @@
                     </td>
                     <td>
                         <div class="joined-date">
-                            <strong>N/A</strong>
-                            <small>Registration date not available</small>
+                            <strong>${user.createdAt ? (new Date(user.createdAt)).toLocaleDateString() : 'N/A'}</strong>
+                            <small>${user.createdAt ? (new Date(user.createdAt)).toLocaleTimeString() : 'Registration date not available'}</small>
                         </div>
                     </td>
                     <td>
                         <div class="action-buttons">
+                            <button class="action-btn btn-view" onclick='viewUser(${JSON.stringify(user)})'>
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            
                             <button class="action-btn btn-edit" onclick='editUser(${JSON.stringify(user)})'>
                                 <i class="fas fa-edit"></i> Edit
                             </button>
@@ -820,6 +859,20 @@
             document.getElementById('userEmail').value = user.email;
             document.getElementById('userPassword').value = user.passward || '';
             document.getElementById('userModal').classList.add('show');
+        }
+
+        // View user details in modal
+        function viewUser(user) {
+            document.getElementById('viewUserId').textContent = user.id || user._id || '';
+            document.getElementById('viewUserName').textContent = user.name || '-';
+            document.getElementById('viewUserEmail').textContent = user.email || '-';
+            document.getElementById('viewUserPhone').textContent = user.phone || user.phoneNumber || '-';
+            document.getElementById('viewUserAddress').textContent = user.address || '-';
+            document.getElementById('userViewModal').classList.add('show');
+        }
+
+        function closeViewModal() {
+            document.getElementById('userViewModal').classList.remove('show');
         }
 
         // Close modal
@@ -934,21 +987,52 @@
             if (!confirm(`Are you sure you want to delete user "${name}"? This action cannot be undone.`)) {
                 return;
             }
-
             try {
-                const response = await fetch(`${API_BASE_URL}/users/${id}`, {
-                    method: 'DELETE'
-                });
+                // Find the user object to get email and name reliably
+                const usersRes = await fetch(`${API_BASE_URL}/users`);
+                const users = usersRes.ok ? await usersRes.json() : [];
+                const user = users.find(u => String(u.id) === String(id) || u._id === id) || { id, name };
 
+                const username = user.name || name;
+                const email = (user.email || '').toLowerCase();
+
+                // 1) Delete service bookings for this user (match by username or email)
+                try {
+                    const svcRes = await fetch(`${API_BASE_URL}/serviceBookings`);
+                    if (svcRes.ok) {
+                        const svcList = await svcRes.json();
+                        const toDelete = svcList.filter(b => (b.username && b.username === username) || (b.email && email && b.email.toLowerCase() === email));
+                        await Promise.all(toDelete.map(b => fetch(`${API_BASE_URL}/serviceBookings/${b.id}`, { method: 'DELETE' })));
+                    }
+                } catch (err) {
+                    console.warn('Failed to purge service bookings for user', id, err);
+                }
+
+                // 2) Delete destination bookings for this user (match by username or email)
+                try {
+                    const destRes = await fetch(`${API_BASE_URL}/destinationBookings`);
+                    if (destRes.ok) {
+                        const destList = await destRes.json();
+                        const toDeleteDest = destList.filter(b => (b.username && b.username === username) || (b.email && email && b.email.toLowerCase() === email));
+                        await Promise.all(toDeleteDest.map(b => fetch(`${API_BASE_URL}/destinationBookings/${b.id}`, { method: 'DELETE' })));
+                    }
+                } catch (err) {
+                    console.warn('Failed to purge destination bookings for user', id, err);
+                }
+
+                // 3) Delete the user record
+                const response = await fetch(`${API_BASE_URL}/users/${id}`, { method: 'DELETE' });
                 if (response.ok) {
-                    alert('User deleted successfully!');
+                    alert('User and related bookings deleted successfully!');
                     loadUsers();
                 } else {
-                    alert('Failed to delete user');
+                    const text = await response.text().catch(() => 'delete failed');
+                    console.error('User delete failed:', text);
+                    alert('Failed to delete user record');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Error deleting user');
+                alert('Error deleting user and related bookings');
             }
         }
 

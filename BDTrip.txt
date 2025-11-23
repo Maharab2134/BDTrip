@@ -1,0 +1,4 @@
+soheleight234_db_user
+1jKiWgPdaNkgzZ9Y
+
+mongodb+srv://soheleight234_db_user:1jKiWgPdaNkgzZ9Y@cluster0.d8o2jpp.mongodb.net/?appName=Cluster0

@@ -162,11 +162,14 @@ function login(obj) {
       console.log("User data:", data);
       let found = false;
       let username;
+      let userId = null;
 
       data.forEach((user) => {
         if (user.email === obj.email && user.passward === obj.password) {
           found = true;
           username = user.name;
+          // capture user id if present for later existence checks
+          userId = user.id || user._id || user.legacyId || null;
         }
       });
 
@@ -181,6 +184,8 @@ function login(obj) {
         // Save login info
         localStorage.setItem("username", username);
         localStorage.setItem("userEmail", obj.email);
+        if (typeof userId !== "undefined" && userId)
+          localStorage.setItem("userId", String(userId));
         localStorage.setItem("logStatus", true);
 
         // Show success and redirect

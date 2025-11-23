@@ -621,6 +621,21 @@
     </div>
 
     <script src="../config.js"></script>
+    <!-- Traveler detail modal -->
+    <div id="travelerModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:99999; align-items:center; justify-content:center;">
+        <div style="background:white; width:90%; max-width:600px; border-radius:12px; padding:20px; position:relative;">
+            <button onclick="closeTravelerModal()" style="position:absolute; right:12px; top:12px; background:none; border:none; font-size:20px;">&times;</button>
+            <h3 id="travelerName">Traveler Details</h3>
+            <div style="margin-top:12px;">
+                <p><strong>Name:</strong> <span id="traveler_name_val"></span></p>
+                <p><strong>Email:</strong> <span id="traveler_email_val"></span></p>
+                <p><strong>Phone:</strong> <span id="traveler_phone_val"></span></p>
+                <p><strong>Address:</strong> <span id="traveler_address_val"></span></p>
+                <p><strong>Registered:</strong> <span id="traveler_created_val"></span></p>
+                <p><strong>Booking ID:</strong> <span id="traveler_booking_id"></span></p>
+            </div>
+        </div>
+    </div>
     <script>
         let allBookings = [];
 
@@ -692,7 +707,11 @@
                             </div>
                         </div>
                     </td>
-                    <td><span class="user-badge"><i class="fas fa-user me-1"></i>${booking.username}</span></td>
+                    <td>
+                        <a href="#" onclick="viewTravelerByBookingId('${booking.id}'); return false;" title="View traveler details">
+                            <span class="user-badge"><i class="fas fa-user me-1"></i>${booking.username}</span>
+                        </a>
+                    </td>
                     <td>
                         <div class="text-sm">
                             <div><strong>${formatDate(booking.start)}</strong></div>
@@ -854,6 +873,58 @@
 
         // Auto-refresh every 30 seconds
         setInterval(loadBookings, 30000);
+
+        // View traveler details by booking id
+        async function viewTravelerByBookingId(id) {
+            try {
+                const booking = allBookings.find(b => String(b.id) === String(id));
+                if (!booking) {
+                    alert('Booking not found');
+                    return;
+                }
+
+                document.getElementById('traveler_booking_id').textContent = booking.id || 'N/A';
+
+                // Try to find user by username or email
+                const resp = await fetch(`${API_BASE_URL}/users`);
+                let users = [];
+                if (resp.ok) users = await resp.json();
+
+                let user = null;
+                if (users && users.length) {
+                    user = users.find(u => (u.name && u.name === booking.username) || (u.email && u.email === booking.username));
+                }
+
+                if (user) {
+                    document.getElementById('travelerName').textContent = `Traveler: ${user.name}`;
+                    document.getElementById('traveler_name_val').textContent = user.name || 'N/A';
+                    document.getElementById('traveler_email_val').textContent = user.email || 'N/A';
+                    document.getElementById('traveler_phone_val').textContent = user.phone || 'N/A';
+                    document.getElementById('traveler_address_val').textContent = user.address || 'N/A';
+                    document.getElementById('traveler_created_val').textContent = user.createdAt ? new Date(user.createdAt).toLocaleString() : 'N/A';
+                } else {
+                    // If user not found in users collection, show booking.username only
+                    document.getElementById('travelerName').textContent = `Traveler: ${booking.username}`;
+                    document.getElementById('traveler_name_val').textContent = booking.username || 'N/A';
+                    document.getElementById('traveler_email_val').textContent = booking.email || 'N/A';
+                    document.getElementById('traveler_phone_val').textContent = booking.phone || 'N/A';
+                    document.getElementById('traveler_address_val').textContent = booking.address || 'N/A';
+                    document.getElementById('traveler_created_val').textContent = booking.bookingDate ? new Date(booking.bookingDate).toLocaleString() : 'N/A';
+                }
+
+                // Show modal
+                const modal = document.getElementById('travelerModal');
+                if (modal) modal.style.display = 'flex';
+            } catch (err) {
+                console.error('Error loading traveler info', err);
+                alert('Failed to load traveler info');
+            }
+        }
+
+        function closeTravelerModal() {
+            const modal = document.getElementById('travelerModal');
+            if (modal) modal.style.display = 'none';
+        }
     </script>
 </body>
 </html>

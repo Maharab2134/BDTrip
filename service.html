@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Righteous&family=Tilt+Prism&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Righteous&family=Tilt+Prism&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>BDTrip | Services</title>
@@ -178,7 +181,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
             opacity: 0;
             transition: var(--transition);
             display: flex;
@@ -197,9 +200,12 @@
         }
 
         @keyframes iconPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.1);
             }
@@ -359,7 +365,8 @@
             position: relative;
         }
 
-        .form-group input, .form-group select {
+        .form-group input,
+        .form-group select {
             width: 100%;
             padding: 15px 15px 15px 45px;
             border: 2px solid #e1e5ee;
@@ -369,7 +376,8 @@
             background-color: #f8f9fa;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--primary-color);
             background-color: white;
@@ -533,15 +541,15 @@
             .services-hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .services-hero {
                 height: 300px;
             }
-            
+
             .section-title h2 {
                 font-size: 2rem;
             }
-            
+
             .services-container {
                 padding: 60px 0;
             }
@@ -551,15 +559,15 @@
             .services-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .services-hero h1 {
                 font-size: 2rem;
             }
-            
+
             .services-hero p {
                 font-size: 1rem;
             }
-            
+
             .form-container {
                 padding: 20px;
             }
@@ -572,9 +580,11 @@
     <nav class="navbar navbar-expand-lg fixed-top topColor" id="navBar">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="image/logo-no-background.png" alt="BDTrip" class="logo" style="width: 200px;">
+                <div class="logo-text">BD<span>Trip</span></div>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse float-xl-end" id="navbarSupportedContent">
@@ -601,7 +611,8 @@
                         <a class="nav-link" href="userLoginReg/login.html" id="logdiv">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary reg-btn" href="userLoginReg/registration.html" id="registerDiv">Register</a>
+                        <a class="btn btn-primary reg-btn" href="userLoginReg/registration.html"
+                            id="registerDiv">Register</a>
                     </li>
                 </ul>
             </div>
@@ -614,7 +625,8 @@
         <div class="container">
             <div class="services-hero-content">
                 <h1>Our Adventure Services</h1>
-                <p>Experience the thrill of Bangladesh's most exciting adventures with our expertly guided tours and activities.</p>
+                <p>Experience the thrill of Bangladesh's most exciting adventures with our expertly guided tours and
+                    activities.</p>
             </div>
         </div>
     </section>
@@ -624,7 +636,8 @@
         <div class="container">
             <div class="section-title">
                 <h2>Choose Your Adventure</h2>
-                <p>From mountain biking to scuba diving, we offer a wide range of thrilling activities for all adventure enthusiasts.</p>
+                <p>From mountain biking to scuba diving, we offer a wide range of thrilling activities for all adventure
+                    enthusiasts.</p>
             </div>
 
             <div class="services-grid" id="servicesGrid">
@@ -643,12 +656,13 @@
                     <label for="service">Selected Service</label>
                     <input type="text" id="service" name="service" readonly>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="people">Number of People</label>
                     <div class="input-container">
                         <i class="fas fa-users input-icon"></i>
-                        <input type="number" id="people" name="people" min="1" max="20" required placeholder="How many people?">
+                        <input type="number" id="people" name="people" min="1" max="20" required
+                            placeholder="How many people?">
                     </div>
                 </div>
 
@@ -656,7 +670,7 @@
                     <label for="phone">Contact Number</label>
                     <div class="input-container">
                         <i class="fas fa-phone input-icon"></i>
-                        <input type="tel" id="phone" name="phone" required placeholder="Your phone number">
+                        <input type="tel" id="phone" name="phone" required placeholder="Your phone number" readonly>
                     </div>
                 </div>
 
@@ -664,7 +678,7 @@
                     <label for="email">Email Address</label>
                     <div class="input-container">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" id="email" name="email" required placeholder="Your email address">
+                        <input type="email" id="email" name="email" required placeholder="Your email address" readonly>
                     </div>
                 </div>
 
@@ -693,7 +707,8 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <img src="image/logo-no-background.png" alt="BDTrip" class="footer-logo" style="width: 200px;">
-                    <p>Discover the rich cultural heritage and natural beauty of Bangladesh with our expertly curated tours and travel experiences.</p>
+                    <p>Discover the rich cultural heritage and natural beauty of Bangladesh with our expertly curated
+                        tours and travel experiences.</p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -731,16 +746,20 @@
                 <div class="col-6 col-md-2 mb-4">
                     <h5>CONTACT</h5>
                     <ul class="nav flex-column">
-                        <li><a href="#" class="nav-link p-0"><i class="fas fa-map-marker-alt me-2"></i>Dhaka, Bangladesh</a></li>
-                        <li><a href="tel:+8801234567890" class="nav-link p-0"><i class="fas fa-phone me-2"></i>+880 1234-567890</a></li>
-                        <li><a href="mailto:info@bdtrip.com" class="nav-link p-0"><i class="fas fa-envelope me-2"></i>info@bdtrip.com</a></li>
+                        <li><a href="#" class="nav-link p-0"><i class="fas fa-map-marker-alt me-2"></i>Dhaka,
+                                Bangladesh</a></li>
+                        <li><a href="tel:+8801234567890" class="nav-link p-0"><i class="fas fa-phone me-2"></i>+880
+                                1234-567890</a></li>
+                        <li><a href="mailto:info@bdtrip.com" class="nav-link p-0"><i
+                                    class="fas fa-envelope me-2"></i>info@bdtrip.com</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="row footer-bottom">
                 <div class="col-md-12">
-                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center py-4 border-top">
+                    <div
+                        class="d-flex flex-column flex-sm-row justify-content-between align-items-center py-4 border-top">
                         <p class="mb-3 mb-sm-0">© 2025 BDTrip. All rights reserved.</p>
                         <div>
                             <a href="#" class="me-3">Terms & Agreements</a>
@@ -757,7 +776,7 @@
     <script src="userLoginReg/logstatus.js"></script>
     <script>
         // Show or hide "My Bookings" nav item based on login status
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             try {
                 const loginstatus = JSON.parse(localStorage.getItem('logStatus'));
                 const myBookingsNav = document.getElementById('myBookingsNav');
@@ -773,10 +792,10 @@
             try {
                 const response = await fetch(`${API_BASE_URL}/services`);
                 const services = await response.json();
-                
+
                 const servicesGrid = document.getElementById('servicesGrid');
                 servicesGrid.innerHTML = '';
-                
+
                 services.forEach(service => {
                     const serviceCard = `
                         <div class="service-card">
@@ -797,82 +816,148 @@
                                     </div>
                                 </div>
                                 <div class="service-price">From ৳ ${service.price} / person</div>
-                                <button class="book-btn" data-service="${service.name}">Book Now</button>
+                                <button class="book-btn" data-service="${service.name}" data-price="${service.price}" data-id="${service.id || service.name}" data-groupsize="${service.groupSize}">Book Now</button>
                             </div>
                         </div>
                     `;
                     servicesGrid.innerHTML += serviceCard;
                 });
-                
-                // Reinitialize book buttons after loading services
+
+                // Save loaded services for later price lookup and reinitialize book buttons after loading services
+                window.loadedServices = services;
                 initializeBookButtons();
-                
+
             } catch (error) {
                 console.error('Error loading services:', error);
                 document.getElementById('servicesGrid').innerHTML = '<p style="text-align: center; color: red;">Failed to load services. Please try again later.</p>';
             }
         }
-        
+
         // Initialize book buttons
         function initializeBookButtons() {
             const bookButtons = document.querySelectorAll('.book-btn');
             bookButtons.forEach(button => {
-                button.addEventListener('click', async function() {
+                button.addEventListener('click', async function () {
                     // Check if user is logged in
                     const loginstatus = JSON.parse(localStorage.getItem("logStatus"));
-                    
+
                     if (!loginstatus || loginstatus !== true) {
                         // User is not logged in
                         alert('Please login first to book a service!\n\nYou will be redirected to the login page.');
                         window.location.href = 'userLoginReg/login.html';
                         return;
                     }
-                    
+
                     // User is logged in, proceed with booking
                     const serviceName = this.getAttribute('data-service');
                     // set selected service into the booking form input (resolve at click-time)
                     const serviceInputEl = document.getElementById('service');
                     if (serviceInputEl) serviceInputEl.value = serviceName;
-                    
-                    // Get username and fetch user data to auto-fill email
+
+                    // store selected service price for amount calculation
+                    const dataPrice = this.getAttribute('data-price');
+                    if (dataPrice) {
+                        window.selectedServicePrice = Number(dataPrice);
+                    } else if (window.loadedServices) {
+                        const svc = window.loadedServices.find(s => s.name === serviceName || String(s.id) === this.getAttribute('data-id'));
+                        if (svc && svc.price) window.selectedServicePrice = Number(svc.price);
+                    }
+
+                    // Parse group size (e.g. "1-4 people") and set people input min/max accordingly
+                    try {
+                        const peopleInputEl = document.getElementById('people');
+                        let minPeople = 1;
+                        let maxPeople = 20;
+
+                        // prefer data attribute on button, fallback to loadedServices entry
+                        let groupSizeStr = this.getAttribute('data-groupsize');
+                        if ((!groupSizeStr || groupSizeStr.trim() === '') && window.loadedServices) {
+                            const svc = window.loadedServices.find(s => s.name === serviceName || String(s.id) === this.getAttribute('data-id')) || {};
+                            groupSizeStr = svc.groupSize;
+                        }
+
+                        if (groupSizeStr) {
+                            const rangeMatch = String(groupSizeStr).match(/(\d+)\s*[-–]\s*(\d+)/);
+                            if (rangeMatch) {
+                                minPeople = Number(rangeMatch[1]);
+                                maxPeople = Number(rangeMatch[2]);
+                            } else {
+                                const singleMatch = String(groupSizeStr).match(/(\d+)/);
+                                if (singleMatch) {
+                                    minPeople = 1;
+                                    maxPeople = Number(singleMatch[1]);
+                                }
+                            }
+                        }
+
+                        if (peopleInputEl) {
+                            peopleInputEl.min = minPeople;
+                            peopleInputEl.max = maxPeople;
+                            peopleInputEl.value = minPeople;
+                            peopleInputEl.placeholder = `Between ${minPeople} and ${maxPeople}`;
+                        }
+                    } catch (err) {
+                        console.warn('Could not set people input limits:', err);
+                    }
+
+                    // Get username and fetch user data to auto-fill email and phone
                     const username = localStorage.getItem("username");
-                    
-                    // First try to get email from localStorage (faster)
+
+                    // First try to get email and phone from localStorage (faster)
                     let userEmail = localStorage.getItem("userEmail");
-                    
+                    let userPhone = localStorage.getItem("userPhone");
+
                     if (userEmail) {
                         console.log("Email found in localStorage:", userEmail);
                         document.getElementById('email').value = userEmail;
-                    } else {
-                        console.log("Email not in localStorage, fetching from API...");
-                        // Fallback: fetch from API if not in localStorage
+                    }
+
+                    if (userPhone) {
+                        console.log("Phone found in localStorage:", userPhone);
+                        document.getElementById('phone').value = userPhone;
+                    }
+
+                    // If either email or phone missing, try fetching from API
+                    if (!userEmail || !userPhone) {
+                        console.log("Contact info missing in localStorage, fetching from API...");
                         try {
                             const response = await fetch(`${API_BASE_URL}/users`);
                             const users = await response.json();
-                            const user = users.find(u => u.name === username);
-                            
-                            if (user && user.email) {
-                                console.log("Email found from API:", user.email);
-                                document.getElementById('email').value = user.email;
-                                // Save to localStorage for next time
-                                localStorage.setItem("userEmail", user.email);
+                            const user = users.find(u => u.name === username || u.email === userEmail);
+
+                            if (user) {
+                                if (!userEmail && user.email) {
+                                    console.log("Email found from API:", user.email);
+                                    document.getElementById('email').value = user.email;
+                                    localStorage.setItem("userEmail", user.email);
+                                }
+
+                                if (!userPhone && (user.phone || user.mobile || user.contact)) {
+                                    // try common phone field names on user object
+                                    const phoneVal = user.phone || user.mobile || user.contact || '';
+                                    if (phoneVal) {
+                                        console.log("Phone found from API:", phoneVal);
+                                        document.getElementById('phone').value = phoneVal;
+                                        localStorage.setItem("userPhone", phoneVal);
+                                    }
+                                }
                             } else {
-                                console.log("User not found or no email");
+                                console.log("User not found in API or no contact info available");
                             }
                         } catch (error) {
                             console.error('Error fetching user data:', error);
                         }
                     }
-                    
+
                     // show booking overlay (resolve element at click-time)
                     const bookingOverlayEl = document.getElementById('bookingOverlay');
                     if (bookingOverlayEl) bookingOverlayEl.classList.add('active');
                 });
             });
         }
-        
+
         // Booking form functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const bookingOverlay = document.getElementById('bookingOverlay');
             const closeButton = document.querySelector('.close-button');
             const bookingForm = document.getElementById('booking-form');
@@ -880,52 +965,67 @@
 
             // Load services on page load
             loadServices();
-            
+
             // Close booking form
-            closeButton.addEventListener('click', function() {
+            closeButton.addEventListener('click', function () {
                 bookingOverlay.classList.remove('active');
             });
-            
+
             // Close booking form when clicking outside
-            bookingOverlay.addEventListener('click', function(e) {
+            bookingOverlay.addEventListener('click', function (e) {
                 if (e.target === bookingOverlay) {
                     bookingOverlay.classList.remove('active');
                 }
             });
-            
+
             // Handle form submission
-            bookingForm.addEventListener('submit', async function(e) {
+            bookingForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
-                
+
                 // Get form values
                 const service = serviceInput.value;
                 const people = document.getElementById('people').value;
-                const phone = document.getElementById('phone').value;
-                const email = document.getElementById('email').value;
+                // Prefer trusted values from localStorage (prevent client-side tampering)
+                const storedEmail = localStorage.getItem('userEmail');
+                const storedPhone = localStorage.getItem('userPhone');
+
+                // If stored values exist, use them; otherwise fall back to form values
+                const phone = storedPhone || document.getElementById('phone').value;
+                const email = storedEmail || document.getElementById('email').value;
                 const date = document.getElementById('date').value;
                 const username = localStorage.getItem("username");
-                
+
                 // Simple validation
-                if(service && people && phone && email && date) {
+                if (service && people && phone && email && date) {
                     try {
                         // Check for duplicate booking on same date
                         const checkResponse = await fetch(`${API_BASE_URL}/serviceBookings`);
                         const existingBookings = await checkResponse.json();
-                        
+
                         // Check if user already has a booking for the same service and date
-                        const duplicateBooking = existingBookings.find(booking => 
-                            booking.email === email && 
-                            booking.service === service && 
+                        const duplicateBooking = existingBookings.find(booking =>
+                            booking.email === email &&
+                            booking.service === service &&
                             booking.date === date &&
                             booking.status !== 'Cancelled'
                         );
-                        
+
                         if (duplicateBooking) {
                             alert(`You already have a booking for ${service} on ${date}!\n\nPlease choose a different date or cancel your existing booking.`);
                             return;
                         }
-                        
-                        // Create booking object
+
+                        // Create booking object (include calculated amount if price available)
+                        const amount = (window.selectedServicePrice && people) ? Number(window.selectedServicePrice) * Number(people) : undefined;
+
+                        // Ensure the form fields reflect the authoritative values before submit
+                        try {
+                            if (storedEmail) document.getElementById('email').value = storedEmail;
+                            if (storedPhone) document.getElementById('phone').value = storedPhone;
+                        } catch (err) {
+                            // ignore DOM update errors
+                        }
+
                         const bookingData = {
                             service: service,
                             people: people,
@@ -934,9 +1034,10 @@
                             date: date,
                             username: username,
                             bookingDate: new Date().toISOString(),
-                            status: 'Pending'
+                            status: 'Pending',
+                            amount: amount !== undefined ? String(amount) : undefined
                         };
-                        
+
                         // Save to database
                         const response = await fetch(`${API_BASE_URL}/serviceBookings`, {
                             method: 'POST',
@@ -945,18 +1046,18 @@
                             },
                             body: JSON.stringify(bookingData)
                         });
-                        
-                        if(response.ok) {
+
+                        if (response.ok) {
                             const savedBooking = await response.json();
                             alert(`Thank you for your booking!\n\nBooking ID: ${savedBooking.id}\nService: ${service}\nPeople: ${people}\nPhone: ${phone}\nEmail: ${email}\nDate: ${date}\n\nYour booking has been saved successfully!\nWe will contact you shortly to confirm.`);
-                            
+
                             // Reset form
                             bookingForm.reset();
                             bookingOverlay.classList.remove('active');
                         } else {
                             throw new Error('Failed to save booking');
                         }
-                    } catch(error) {
+                    } catch (error) {
                         console.error('Error saving booking:', error);
                         alert('Sorry, there was an error saving your booking. Please try again or contact us directly.');
                     }
@@ -964,16 +1065,16 @@
                     alert('Please fill in all fields');
                 }
             });
-            
+
             // Set minimum date to today
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('date').setAttribute('min', today);
-            
+
             // Update book buttons based on login status
             function updateBookButtons() {
                 const loginstatus = JSON.parse(localStorage.getItem("logStatus"));
                 const bookButtons = document.querySelectorAll('.book-btn');
-                
+
                 if (!loginstatus || loginstatus !== true) {
                     bookButtons.forEach(button => {
                         const originalText = button.textContent;
@@ -984,10 +1085,11 @@
                     });
                 }
             }
-            
+
             // Call on page load
             updateBookButtons();
         });
     </script>
 </body>
+
 </html>

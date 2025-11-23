@@ -163,7 +163,10 @@ async function createHandler(Model, collectionName, req, res) {
       ? db[collectionName]
       : [];
     const id = nextIdForCollection(db[collectionName]);
-    const payload = Object.assign({}, req.body, { id });
+    const payload = Object.assign({}, req.body, {
+      id,
+      createdAt: new Date().toISOString(),
+    });
     db[collectionName].push(payload);
     writeDBFile(db);
     return res.status(201).json(payload);

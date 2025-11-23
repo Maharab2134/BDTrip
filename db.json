@@ -7,34 +7,16 @@
     }
   ],
   "serviceBookings": [],
-  "destinationBookings": [
-    {
-      "id": "efbf",
-      "name": "Paro",
-      "location": "Scenic Small Town in Bhutan",
-      "image": "https://hblimg.mmtcdn.com/content/hubble/img/paro/mmt/destination/m_paro-landscape_l_400_640.jpg",
-      "city": "Agartala, Tripura, India",
-      "start": "2025-10-22",
-      "end": "2025-10-23",
-      "persons": "3",
-      "amount": "2250",
-      "bookingDate": "2025-10-22T14:29:41.164Z",
-      "status": "Confirmed",
-      "username": "Akash"
-    }
-  ],
+  "destinationBookings": [],
   "users": [
     {
-      "id": "8813",
+      "id": "b3ae",
       "name": "Akash",
-      "email": "ab@gmail.com",
-      "passward": "1234567"
-    },
-    {
-      "id": "6348",
-      "name": "RIdoy",
-      "email": "ridoy@gmail.com",
-      "passward": "123456"
+      "email": "akash@gmail.com",
+      "passward": "user1234",
+      "address": "NBG Ring Route 260m, Goran Chatbari, Pallabi, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1216, Bangladesh",
+      "phone": "01586282609",
+      "createdAt": "2025-11-21T16:08:59.973Z"
     }
   ],
   "services": [
@@ -89,14 +71,14 @@
       "icon": "fa-landmark"
     },
     {
-      "id": "6",
       "name": "Bangladesh Photography Expedition",
       "description": "Capture the soul of Bangladesh on a tour designed for photographers. We'll guide you to the most photogenic spots, from bustling markets to serene landscapes.",
-      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.8FA41Fc3Kzz-FZIHydaTsgHaEK%3Fcb%3D12%26pid%3DApi&f=1&ipt=3f1b960182a70cc145d027da9d7b7bf823dcc8d2ae0379ad06838388284555fc&ipo=images",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.DirR6oTfwAVJ7_P3JQ22OQHaEo%3Fpid%3DApi&f=1&ipt=0e6c3b3f83c3633da69b4b557d59970600d56f98ef9f53d1defb2939c01f05af&ipo=images",
       "price": "6000",
       "duration": "Full Day (Customizable)",
       "groupSize": "1-3 people",
-      "icon": "fa-camera-retro"
+      "icon": "fa-campground",
+      "id": "6"
     },
     {
       "id": "7",

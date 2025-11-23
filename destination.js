@@ -3,7 +3,7 @@ const API_BASE_URL = "http://localhost:3000";
 
 let destination = JSON.parse(localStorage.getItem("destination")) || [];
 let conty = document.getElementById("conty");
-              
+
 let paise = destination[0].price;
 
 // Update price display
@@ -156,7 +156,7 @@ bookBtn.addEventListener("click", function () {
           persons: `${NoOfPerson.value}`,
           amount: `${Number(paise) * Number(NoOfPerson.value) * 10}`,
           bookingDate: new Date().toISOString(),
-          status: "Confirmed",
+          status: "Pending",
           username: username,
         }),
         headers: {
@@ -166,7 +166,9 @@ bookBtn.addEventListener("click", function () {
     })
     .then((response) => {
       if (response && response.ok) {
-        alert("Your booking is completed. Thank You!");
+        alert(
+          "Your booking request has been submitted and is pending confirmation. Thank you!"
+        );
         location.replace("./discover.html");
       } else if (response) {
         alert("Failed to save booking. Please try again.");
